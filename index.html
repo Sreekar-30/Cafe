@@ -181,6 +181,34 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(max-width:900px){.nav-links{gap:16px}.nav-links a{font-size:9px}.about{gap:45px}.about-visual{min-height:560px}.experience-card,.experience-card:nth-child(n){grid-column:span 6;min-height:340px}.experience-card:nth-child(3),.experience-card:nth-child(6){grid-column:span 6}.menu-grid{grid-template-columns:repeat(2,1fr)}.visit{gap:40px}}
 @media(max-width:650px){:root{--gutter:22px}.site-nav{padding:17px var(--gutter)}.brand{font-size:19px}.menu-toggle{display:block;z-index:2}.nav-links{position:absolute;top:0;left:0;right:0;padding:90px 24px 28px;background:rgba(23,19,15,.98);display:flex;flex-direction:column;align-items:flex-start;gap:23px;transform:translateY(-120%);transition:transform .45s cubic-bezier(.77,0,.18,1)}.nav-links.open{transform:translateY(0)}.nav-links a{font-size:12px}.nav-book{padding:12px 16px}.hero{min-height:850px;min-height:100svh;padding-top:150px;padding-bottom:95px}.hero-topline{top:92px;font-size:8px}.hero-topline span:last-child{display:none}.hero h1{font-size:clamp(68px,17vw,112px);margin:24px 0 28px}.hero h1 .indent{padding-left:28px}.hero-bottom{display:block}.hero-description{font-size:13px;margin-bottom:24px}.hero-actions{gap:8px}.button{padding:14px 15px;font-size:9px}.hero-index{display:none}.marquee{padding:12px 0}.marquee span{font-size:21px}.section{padding-top:90px;padding-bottom:90px}.section-label{margin-bottom:42px}.about{grid-template-columns:1fr;gap:60px}.about-visual{min-height:470px;margin-right:20px}.about-copy h2{font-size:64px}.experience-heading{display:block}.experience-heading h2{font-size:76px;margin-bottom:22px}.experience-heading p{max-width:300px}.experience-grid{gap:10px}.experience-card,.experience-card:nth-child(n){grid-column:span 12;min-height:360px}.menu-head{display:block}.menu-head h2{font-size:82px;margin-bottom:18px}.menu-grid{grid-template-columns:1fr}.menu-photo{height:280px}.menu-card p{min-height:0}.gallery-title{display:block}.gallery-title h2{font-size:74px;margin-bottom:18px}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 170px 190px;gap:8px}.gallery-item:first-child{grid-row:span 2}.gallery-item:nth-child(4){grid-column:1/-1}.gallery-caption{font-size:8px;left:10px;bottom:10px}.big-quote blockquote{font-size:54px}.visit{grid-template-columns:1fr;gap:48px}.visit-copy h2{font-size:78px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.visit-form{padding:24px}.footer-top{align-items:flex-start;flex-direction:column}.footer-bottom{font-size:8px}.footer-links{gap:14px}.cursor,.cursor-ring{display:none}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+
+/* SCROLL-DRIVEN COFFEE INTRO */
+.coffee-journey{height:520svh;position:relative;background:#100c09;isolation:isolate}
+.journey-sticky{height:100svh;min-height:620px;position:sticky;top:0;overflow:hidden;background:radial-gradient(ellipse at 50% 52%,#392115 0%,#1b120d 38%,#100c09 76%);display:flex;align-items:center;justify-content:center}
+.coffee-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.journey-grain{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.075;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.journey-top{position:absolute;z-index:3;top:30px;left:var(--gutter);right:var(--gutter);display:flex;justify-content:space-between;font:9px var(--mono);letter-spacing:.18em;color:rgba(242,234,220,.58)}
+.journey-progress{display:flex;align-items:center;gap:12px}.journey-progress i{display:block;width:90px;height:1px;background:rgba(242,234,220,.2);position:relative;overflow:hidden}.journey-progress i:after{content:"";position:absolute;inset:0;background:var(--orange);transform:scaleX(var(--journey-progress,0));transform-origin:left}
+.journey-copy{position:absolute;z-index:2;left:var(--gutter);top:50%;transform:translateY(-50%);width:min(650px,55vw);pointer-events:none}
+.journey-kicker,.brand-overline{font:9px var(--mono);letter-spacing:.22em;color:var(--orange2);text-transform:uppercase}
+.journey-title{font:500 clamp(76px,12vw,166px)/.78 var(--serif);letter-spacing:-.09em;margin-top:28px}
+.title-line{display:block;transition:opacity .3s}.title-italic{font-style:italic;padding-left:12%;color:var(--cream)}.title-orange{color:var(--orange);padding-left:25%}
+.journey-caption{font-size:13px;line-height:1.7;color:rgba(242,234,220,.7);max-width:260px;margin:32px 0 0 25%;opacity:0;transform:translateY(15px);transition:opacity .5s,transform .5s}
+.journey-brand{position:absolute;z-index:3;left:var(--gutter);right:var(--gutter);top:50%;transform:translateY(-42%) scale(.82);text-align:center;opacity:0;pointer-events:none;transition:opacity .35s}
+.journey-brand>div{font:500 clamp(48px,10.5vw,142px)/.84 var(--serif);letter-spacing:-.085em;margin-top:22px}
+.journey-brand em{display:block;color:var(--orange);font:italic 600 clamp(76px,15vw,205px)/.8 var(--serif);letter-spacing:-.09em}
+.journey-brand p{font:9px var(--mono);letter-spacing:.25em;color:rgba(242,234,220,.7);margin-top:28px}
+.journey-end{position:absolute;z-index:3;bottom:48px;left:var(--gutter);right:var(--gutter);display:flex;justify-content:space-between;align-items:center;font:9px var(--mono);letter-spacing:.17em;color:rgba(242,234,220,.65);opacity:0;transition:opacity .4s}
+.journey-end a{color:var(--orange2);border-bottom:1px solid rgba(240,100,53,.5);padding-bottom:9px}.journey-end b{font-size:16px;margin-left:16px}
+.journey-scene-label{position:absolute;z-index:3;right:var(--gutter);bottom:50%;writing-mode:vertical-rl;font:9px var(--mono);letter-spacing:.18em;color:rgba(242,234,220,.5)}
+.journey-scroll-cue{position:absolute;z-index:3;bottom:48px;left:50%;transform:translateX(-50%);font:8px var(--mono);letter-spacing:.2em;color:rgba(242,234,220,.5);display:flex;gap:12px;align-items:center;transition:opacity .3s}
+.journey-scroll-cue span{color:var(--orange);font-size:16px}
+.journey-sticky[data-phase="4"] .journey-copy{opacity:0}
+.journey-sticky[data-phase="4"] .journey-brand{opacity:1;transform:translateY(-50%) scale(1)}
+.journey-sticky[data-phase="4"] .journey-end{opacity:1}
+.journey-sticky[data-phase="4"] .journey-scroll-cue{opacity:0}
+@media(max-width:700px){.coffee-journey{height:430svh}.journey-sticky{min-height:560px}.journey-top{top:22px;font-size:7px}.journey-progress i{width:45px}.journey-copy{width:calc(100% - 44px);top:38%}.journey-title{font-size:clamp(76px,18vw,118px)}.journey-caption{margin-left:12%;font-size:12px}.journey-brand>div{font-size:clamp(45px,11vw,78px)}.journey-brand em{font-size:clamp(82px,19vw,135px)}.journey-brand p{font-size:7px;letter-spacing:.16em}.journey-scene-label{right:18px;font-size:7px}.journey-end{bottom:28px;font-size:7px}.journey-scroll-cue{bottom:28px;font-size:7px}}
+@media(prefers-reduced-motion:reduce){.coffee-journey{height:auto;min-height:100svh}.journey-sticky{position:relative;min-height:100svh}.journey-copy{display:none}.journey-brand{opacity:1;transform:translateY(-50%) scale(1)}.journey-end{opacity:1}.journey-scroll-cue{display:none}}
 </style>
 </head>
 <body class="is-loading">
@@ -194,18 +222,21 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   </ul>
 </nav>
 <main>
-<section class="hero" id="home">
-  <div class="hero-media" aria-hidden="true"><img class="hero-slide" src="hero1.png" alt=""><img class="hero-slide" src="hero2.png" alt=""><img class="hero-slide" src="hero3.png" alt=""></div>
-  <div class="hero-topline"><span>Rushikonda · Visakhapatnam</span><span>17°48' N — 83°23' E</span></div>
-  <div class="hero-copy">
-    <div class="kicker reveal">A café for the beautifully curious</div>
-    <h1><span class="reveal">Stories</span><span class="indent reveal reveal-delay-1">above the sea.</span></h1>
-    <div class="hero-bottom reveal reveal-delay-2">
-      <p class="hero-description">A hilltop hideaway for slow coffee, long conversations and sunsets that make you forget to check the time.</p>
-      <div class="hero-actions"><a class="button primary magnetic" href="#menu">Explore the menu <span class="arrow">↗</span></a><a class="button magnetic" href="#story">Step inside <span class="arrow">↓</span></a></div>
+<section class="coffee-journey" id="home" aria-label="The Writer's Room introduction">
+  <div class="journey-sticky">
+    <canvas class="coffee-canvas" aria-hidden="true"></canvas>
+    <div class="journey-grain"></div>
+    <div class="journey-top"><span>RUSHIKONDA · VISAKHAPATNAM</span><span class="journey-progress">SCROLL TO BEGIN <i></i></span></div>
+    <div class="journey-copy">
+      <p class="journey-kicker" data-scene="0">A STORY IN EVERY CUP</p>
+      <h1 class="journey-title"><span class="title-line" data-scene="0">First,</span><span class="title-line title-italic" data-scene="1">a little</span><span class="title-line title-orange" data-scene="2">alchemy.</span></h1>
+      <p class="journey-caption" data-scene="1">From a single bean to a moment worth slowing down for.</p>
     </div>
+    <div class="journey-brand" aria-label="The Writer's Room"><span class="brand-overline">A PLACE TO PAUSE · A PLACE TO WANDER</span><div>THE WRITER'S</div><em>ROOM.</em><p>WHERE STORIES BREW ABOVE THE SEA.</p></div>
+    <div class="journey-end"><span>THE RITUAL IS YOURS</span><a href="#story">DISCOVER THE ROOM <b>↘</b></a></div>
+    <div class="journey-scene-label" aria-live="polite">01 / THE BEAN</div>
+    <div class="journey-scroll-cue">KEEP SCROLLING <span>↓</span></div>
   </div>
-  <div class="hero-index">SCROLL TO WANDER · 01 / 06</div>
 </section>
 <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>GOOD COFFEE. BETTER STORIES.</span><b>✳</b><span>MADE FOR THE IN-BETWEEN.</span><b>✳</b><span>GOOD COFFEE. BETTER STORIES.</span><b>✳</b><span>MADE FOR THE IN-BETWEEN.</span><b>✳</b></div></div>
 <section class="section" id="story">
@@ -278,6 +309,47 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 <footer class="footer"><div class="footer-top"><a class="footer-brand" href="#home">The Writer's <em>Room.</em></a><a class="footer-cta" href="#visit">Come see for yourself ↗</a></div><div class="footer-bottom"><span>© <span id="year"></span> The Writer's Room · Rushikonda, Vizag</span><div class="footer-links"><a href="#story">Story</a><a href="#menu">Menu</a><a href="#gallery">Moments</a><a href="#visit">Visit</a></div><span>Made for slow afternoons.</span></div></footer>
 <script>
 (function(){
+
+  // Scroll-scrubbed coffee ritual: bean → grounds → pour → steam → identity.
+  (function(){
+    const section=document.querySelector('.coffee-journey');
+    if(!section)return;
+    const stage=section.querySelector('.journey-sticky');
+    const canvas=section.querySelector('.coffee-canvas');
+    const ctx=canvas.getContext('2d',{alpha:false});
+    const label=section.querySelector('.journey-scene-label');
+    const progress=section.querySelector('.journey-progress');
+    const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let w=0,h=0,dpr=1,scrollP=0,raf=0,particles=[];
+    function resize(){dpr=Math.min(window.devicePixelRatio||1,1.6);w=canvas.clientWidth;h=canvas.clientHeight;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);particles=Array.from({length:90},(_,i)=>({x:Math.random(),y:Math.random(),r:Math.random()*2+.4,a:Math.random()*.65+.15,s:Math.random()*.18+.04,rot:Math.random()*6.28}))}
+    function smooth(a,b,v){v=Math.max(0,Math.min(1,(v-a)/(b-a)));return v*v*(3-2*v)}
+    function bean(x,y,scale,angle){ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.scale(scale,scale);const g=ctx.createRadialGradient(-9,-13,2,0,0,42);g.addColorStop(0,'#a66a35');g.addColorStop(.45,'#633719');g.addColorStop(1,'#24130c');ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(0,0,27,39,0,0,Math.PI*2);ctx.fill();ctx.strokeStyle='rgba(232,176,112,.6)';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(-3,-31);ctx.bezierCurveTo(18,-12,-18,8,5,31);ctx.stroke();ctx.restore()}
+    function draw(p){
+      ctx.fillStyle='#100c09';ctx.fillRect(0,0,w,h);
+      const glow=ctx.createRadialGradient(w*.5,h*.52,10,w*.5,h*.52,Math.max(w,h)*.72);glow.addColorStop(0,'rgba(111,57,27,.42)');glow.addColorStop(1,'rgba(16,12,9,0)');ctx.fillStyle=glow;ctx.fillRect(0,0,w,h);
+      const cx=w*.67,cy=h*.52;
+      // Scene one: one oversized, slowly turning coffee bean.
+      const beanFade=1-smooth(.12,.27,p);
+      if(beanFade>0){ctx.globalAlpha=beanFade;bean(cx,cy,Math.min(w,h)*.0065*(1+smooth(0,.12,p)*.7),p*2.4);ctx.globalAlpha=1}
+      // Scene two: roasted grounds burst into a field of particles.
+      const burst=smooth(.13,.38,p)*(1-smooth(.34,.53,p));
+      if(burst>0){particles.forEach((q,i)=>{const angle=q.rot+i*.11;const radius=(.12+q.s*3)*Math.min(w,h)*burst;const x=cx+Math.cos(angle+p*2)*radius+(q.x-.5)*w*.16;const y=cy+Math.sin(angle+p*2)*radius+(q.y-.5)*h*.2;ctx.globalAlpha=burst*q.a;ctx.fillStyle=i%5===0?'#f06435':'#b77b49';ctx.beginPath();ctx.arc(x,y,q.r*(1+burst*2),0,Math.PI*2);ctx.fill()});ctx.globalAlpha=1}
+      // Scene three: an espresso ribbon pours into a cup.
+      const pour=smooth(.34,.57,p)*(1-smooth(.53,.76,p));
+      if(pour>0){ctx.save();ctx.globalAlpha=pour;const cupX=w*.67,cupY=h*.63,cupW=Math.min(w*.34,290),cupH=cupW*.57;ctx.strokeStyle='#d8c5a7';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(cupX-cupW*.5,cupY);ctx.lineTo(cupX-cupW*.43,cupY+cupH);ctx.quadraticCurveTo(cupX,cupY+cupH*1.12,cupX+cupW*.43,cupY+cupH);ctx.lineTo(cupX+cupW*.5,cupY);ctx.stroke();ctx.beginPath();ctx.ellipse(cupX,cupY,cupW*.5,cupH*.22,0,0,Math.PI*2);ctx.fillStyle='#21130c';ctx.fill();ctx.stroke();ctx.beginPath();ctx.ellipse(cupX,cupY,cupW*.43,cupH*.14,0,0,Math.PI*2);ctx.fillStyle='#8e4a22';ctx.fill();ctx.beginPath();ctx.moveTo(cx,0);ctx.bezierCurveTo(cx+22,h*.2,cx-20,h*.38,cupX,cupY);ctx.strokeStyle='#c47a42';ctx.lineWidth=7;ctx.stroke();ctx.restore()}
+      // Scene four: crema ripple and rising steam draw the reveal.
+      const steam=smooth(.55,.82,p);
+      if(steam>0){ctx.save();ctx.globalAlpha=steam*.7;for(let i=0;i<7;i++){const x=w*.67+(i-3)*22;ctx.beginPath();ctx.moveTo(x,h*.46);ctx.bezierCurveTo(x-30,h*.34,x+35,h*.27,x+(i%2?18:-18),h*.12);ctx.strokeStyle='rgba(239,194,145,'+(0.18+i*.025)+')';ctx.lineWidth=2+i%3;ctx.stroke()}ctx.restore()}
+      // A warm circular wash carries the visual into the brand reveal.
+      const reveal=smooth(.72,.91,p);if(reveal>0){ctx.fillStyle='rgba(16,12,9,'+(.15+reveal*.72)+')';ctx.fillRect(0,0,w,h);const r=Math.max(w,h)*reveal*.95;const g=ctx.createRadialGradient(w*.5,h*.5,0,w*.5,h*.5,r);g.addColorStop(0,'rgba(160,83,40,.28)');g.addColorStop(1,'rgba(16,12,9,0)');ctx.fillStyle=g;ctx.fillRect(0,0,w,h)}
+    }
+    function render(){raf=0;draw(scrollP)}
+    function update(){const rect=section.getBoundingClientRect();const range=section.offsetHeight-window.innerHeight;scrollP=Math.max(0,Math.min(1,-rect.top/Math.max(1,range)));const phase=Math.min(4,Math.floor(scrollP*5));stage.dataset.phase=phase;const names=['01 / THE BEAN','02 / THE GRIND','03 / THE POUR','04 / THE STEAM','05 / THE STORY'];label.textContent=names[phase];stage.style.setProperty('--journey-progress',scrollP);progress.firstChild.textContent=scrollP<.2?'SCROLL TO BEGIN':scrollP<.4?'THE GRIND':scrollP<.6?'THE POUR':scrollP<.8?'THE REVEAL':'WELCOME';if(!raf)raf=requestAnimationFrame(render)}
+    resize();update();window.addEventListener('resize',function(){resize();update()},{passive:true});window.addEventListener('scroll',update,{passive:true});
+    if(reduce){section.style.height='auto';stage.style.position='relative';stage.dataset.phase='4';draw(1)}
+    else update();
+  })();
+
   const body=document.body;
   const preloader=document.querySelector('.preloader');
   window.addEventListener('load',function(){setTimeout(function(){preloader.classList.add('done');body.classList.remove('is-loading');document.querySelectorAll('.hero .reveal').forEach(function(el){el.classList.add('visible')});},650)});
