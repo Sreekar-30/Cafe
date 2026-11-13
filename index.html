@@ -75,19 +75,27 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .section-label .number{color:var(--orange)}
 .about{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(44px,9vw,140px);align-items:center}
 .about-visual{position:relative;min-height:680px;isolation:isolate}
-.about-image{position:absolute;inset:0 12% 8% 0;overflow:hidden;background:#382116}
-.about-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,10,7,.16),transparent 36%,rgba(15,10,7,.48))}
-.about-image img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1);filter:saturate(.84) brightness(.9)}
-.about-visual:hover .about-image img{transform:scale(1.045)}
-.about-index{position:absolute;top:22px;left:22px;z-index:2;font:9px var(--mono);letter-spacing:.17em;color:var(--paper)}
-.about-stamp{position:absolute;top:12%;right:5%;z-index:2;width:clamp(124px,15vw,190px);aspect-ratio:1;border:1px solid rgba(242,234,220,.7);border-radius:50%;display:grid;place-items:center;color:var(--paper);transform:rotate(9deg);background:rgba(23,19,15,.22);backdrop-filter:blur(3px)}
-.about-stamp:before{content:"";position:absolute;inset:8px;border:1px solid rgba(242,234,220,.25);border-radius:50%}
-.about-stamp span{position:absolute;top:18px;font:7px var(--mono);letter-spacing:.14em}
-.about-stamp strong{font:italic 600 clamp(25px,3.5vw,42px)/.83 var(--serif);text-align:center;letter-spacing:-.06em;transform:rotate(-9deg)}
-.about-sticker{position:absolute;right:0;bottom:0;width:clamp(150px,19vw,250px);aspect-ratio:1;background:var(--orange);color:var(--ink);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;transform:rotate(7deg);box-shadow:0 18px 50px rgba(0,0,0,.25)}
+.cup-stage{position:absolute;inset:0 12% 8% 0;overflow:hidden;border:1px solid rgba(242,234,220,.14);background:radial-gradient(ellipse at 55% 42%,#49301f 0,#271a12 45%,#17120e 100%);cursor:grab;touch-action:pan-y;user-select:none}
+.cup-stage:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.035),transparent 42%),radial-gradient(ellipse at 50% 88%,rgba(240,100,53,.13),transparent 48%);pointer-events:none;z-index:0}
+.cup-stage:after{content:"";position:absolute;inset:12px;border:1px solid rgba(242,234,220,.08);pointer-events:none;z-index:3}
+.cup-stage:focus-visible{outline:1px solid var(--orange2);outline-offset:5px}
+.cup-stage.is-dragging{cursor:grabbing}
+.cup-stage-meta,.cup-stage-foot{position:absolute;z-index:4;left:22px;right:22px;display:flex;justify-content:space-between;gap:14px;font:8px var(--mono);letter-spacing:.17em;text-transform:uppercase;color:rgba(242,234,220,.76)}
+.cup-stage-meta{top:22px}
+.cup-stage-foot{bottom:20px;color:var(--orange2)}
+.cup-canvas{position:absolute;inset:0;z-index:1;width:100%;height:100%;opacity:0;transition:opacity .8s ease}
+.cup-stage.is-rendered .cup-canvas{opacity:1}
+.cup-fallback-wrap{position:absolute;inset:5% 0 2%;z-index:1;display:grid;place-items:center;animation:cup-float 4.6s ease-in-out infinite}
+.cup-fallback{width:100%;height:100%;overflow:visible;transform:perspective(1100px) rotateX(var(--cup-pitch,7deg)) rotateY(var(--cup-yaw,-16deg));transition:transform .32s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 28px 24px rgba(0,0,0,.3))}
+.cup-stage.is-rendered .cup-fallback-wrap{opacity:0;visibility:hidden;transition:opacity .6s}
+.cup-steam-path{fill:none;stroke:#f3dfc2;stroke-width:4;stroke-linecap:round;opacity:0;animation:steam-rise 3.6s ease-in-out infinite}
+.cup-steam-path:nth-child(2){animation-delay:1.15s}
+.cup-steam-path:nth-child(3){animation-delay:2.2s}
+@keyframes cup-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+@keyframes steam-rise{0%{opacity:0;transform:translateY(12px)}28%{opacity:.5}100%{opacity:0;transform:translateY(-22px)}}
+.about-sticker{position:absolute;right:0;bottom:0;z-index:5;width:clamp(136px,16vw,196px);aspect-ratio:1;background:var(--orange);color:var(--ink);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;transform:rotate(6deg);box-shadow:0 18px 50px rgba(0,0,0,.3)}
 .about-sticker strong{font:italic 600 clamp(30px,5vw,65px)/.9 var(--serif);letter-spacing:-.06em}
 .about-sticker span{font:9px var(--mono);letter-spacing:.16em;text-transform:uppercase;margin-top:14px}
-.about-caption{position:absolute;left:0;right:12%;bottom:3%;z-index:2;display:flex;justify-content:space-between;gap:16px;padding:0 18px;font:8px var(--mono);letter-spacing:.15em;text-transform:uppercase;color:rgba(242,234,220,.82)}
 .about-copy .eyebrow{color:var(--orange);font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase}
 .about-copy h2{font:500 clamp(48px,7vw,96px)/.94 var(--serif);letter-spacing:-.075em;margin:24px 0 34px}
 .about-copy h2 em{color:var(--orange);font-weight:500}
@@ -189,6 +197,8 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(min-width:1500px){.hero h1{font-size:200px}}
 @media(max-width:900px){.nav-links{gap:16px}.nav-links a{font-size:9px}.about{gap:45px}.about-visual{min-height:560px}.experience-card,.experience-card:nth-child(n){grid-column:span 6;min-height:340px}.experience-card:nth-child(3),.experience-card:nth-child(6){grid-column:span 6}.menu-grid{grid-template-columns:repeat(2,1fr)}.visit{gap:40px}}
 @media(max-width:650px){:root{--gutter:22px}.site-nav{padding:17px var(--gutter)}.brand{font-size:19px}.menu-toggle{display:block;z-index:2}.nav-links{position:absolute;top:0;left:0;right:0;padding:90px 24px 28px;background:rgba(23,19,15,.98);display:flex;flex-direction:column;align-items:flex-start;gap:23px;transform:translateY(-120%);transition:transform .45s cubic-bezier(.77,0,.18,1)}.nav-links.open{transform:translateY(0)}.nav-links a{font-size:12px}.nav-book{padding:12px 16px}.hero{min-height:850px;min-height:100svh;padding-top:150px;padding-bottom:95px}.hero-topline{top:92px;font-size:8px}.hero-topline span:last-child{display:none}.hero h1{font-size:clamp(68px,17vw,112px);margin:24px 0 28px}.hero h1 .indent{padding-left:28px}.hero-bottom{display:block}.hero-description{font-size:13px;margin-bottom:24px}.hero-actions{gap:8px}.button{padding:14px 15px;font-size:9px}.hero-index{display:none}.marquee{padding:12px 0}.marquee span{font-size:21px}.section{padding-top:90px;padding-bottom:90px}.section-label{margin-bottom:42px}.about{grid-template-columns:1fr;gap:60px}.about-visual{min-height:470px;margin-right:20px}.about-copy h2{font-size:64px}.experience-heading{display:block}.experience-heading h2{font-size:76px;margin-bottom:22px}.experience-heading p{max-width:300px}.experience-grid{gap:10px}.experience-card,.experience-card:nth-child(n){grid-column:span 12;min-height:360px}.menu-head{display:block}.menu-head h2{font-size:82px;margin-bottom:18px}.menu-grid{grid-template-columns:1fr}.menu-photo{height:280px}.menu-card p{min-height:0}.gallery-title{display:block}.gallery-title h2{font-size:74px;margin-bottom:18px}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 170px 190px;gap:8px}.gallery-item:first-child{grid-row:span 2}.gallery-item:nth-child(4){grid-column:1/-1}.gallery-caption{font-size:8px;left:10px;bottom:10px}.big-quote blockquote{font-size:54px}.visit{grid-template-columns:1fr;gap:48px}.visit-copy h2{font-size:78px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.visit-form{padding:24px}.footer-top{align-items:flex-start;flex-direction:column}.footer-bottom{font-size:8px}.footer-links{gap:14px}.cursor,.cursor-ring{display:none}}
+@media(max-width:900px){.about{grid-template-columns:1fr;gap:60px}.about-visual{min-height:600px;max-width:720px;width:100%}}
+@media(max-width:650px){.about-visual{min-height:460px;margin-right:16px}.cup-stage-meta,.cup-stage-foot{left:14px;right:14px;font-size:7px}.cup-stage-meta span:last-child,.cup-stage-foot span:last-child{display:none}.about-sticker{width:132px}.cup-stage{inset:0 10% 8% 0}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
 
 /* SCROLL-DRIVEN COFFEE INTRO */
@@ -252,11 +262,61 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   <div class="section-label"><span><span class="number">01 /</span> Our story</span><span>A little space to slow down</span></div>
   <div class="about">
     <div class="about-visual reveal">
-      <div class="about-image"><img src="irish-coffee.png" alt="A freshly made coffee at The Writer's Room" loading="lazy"></div>
-      <span class="about-index">01 — THE FIRST POUR</span>
-      <div class="about-stamp" aria-hidden="true"><span>RUSHIKONDA · VIZAG</span><strong>Make<br>room for<br>wonder.</strong></div>
+      <div class="cup-stage" data-cup-viewer tabindex="0" role="group" aria-label="Interactive three-dimensional coffee cup. Drag to turn it or use the arrow keys.">
+        <div class="cup-stage-meta"><span>01 — THE FIRST POUR</span><span>RUSHIKONDA · 17°48′ N</span></div>
+        <canvas class="cup-canvas" aria-hidden="true"></canvas>
+        <div class="cup-fallback-wrap" aria-hidden="true">
+          <svg class="cup-fallback" viewBox="0 0 620 650" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="cup-ceramic" x1="0" x2="1">
+                <stop offset="0" stop-color="#9e8970"/>
+                <stop offset=".19" stop-color="#f5eddf"/>
+                <stop offset=".55" stop-color="#d9c9b3"/>
+                <stop offset=".82" stop-color="#f8f0e4"/>
+                <stop offset="1" stop-color="#98836c"/>
+              </linearGradient>
+              <linearGradient id="cup-saucer" x1="0" y1="0" x2="0" y2="1">
+                <stop stop-color="#f4ead9"/>
+                <stop offset=".45" stop-color="#c5b29a"/>
+                <stop offset="1" stop-color="#76624e"/>
+              </linearGradient>
+              <radialGradient id="cup-coffee" cx=".38" cy=".32">
+                <stop stop-color="#9c5a30"/>
+                <stop offset=".5" stop-color="#4c2617"/>
+                <stop offset="1" stop-color="#1d100b"/>
+              </radialGradient>
+              <linearGradient id="cup-handle" x1="0" x2="1">
+                <stop stop-color="#aa967e"/>
+                <stop offset=".48" stop-color="#f2e7d6"/>
+                <stop offset="1" stop-color="#b19c82"/>
+              </linearGradient>
+              <filter id="cup-blur"><feGaussianBlur stdDeviation="14"/></filter>
+            </defs>
+            <g fill="none" stroke="#f3dfc2" stroke-width="4" stroke-linecap="round">
+              <path class="cup-steam-path" d="M264 214c-31-33 26-51 1-89-12-18-9-30 4-46"/>
+              <path class="cup-steam-path" d="M310 205c-18-28 34-52 9-86-13-18-9-33 6-48"/>
+              <path class="cup-steam-path" d="M355 213c-27-31 20-51 3-82-9-17-6-31 8-46"/>
+            </g>
+            <ellipse cx="313" cy="517" rx="177" ry="25" fill="#090705" opacity=".56" filter="url(#cup-blur)"/>
+            <path d="M142 429c24-34 319-42 349-4 16 20-27 49-78 61-79 19-212 12-257-15-22-13-29-28-14-42Z" fill="url(#cup-saucer)"/>
+            <ellipse cx="315" cy="431" rx="170" ry="35" fill="#e9dcc8" stroke="#fbf3e7" stroke-width="4"/>
+            <ellipse cx="315" cy="431" rx="126" ry="22" fill="none" stroke="#bd7950" stroke-width="3" opacity=".8"/>
+            <path d="M424 284c82-28 121 11 114 64-7 49-48 66-102 42" fill="none" stroke="#76624d" stroke-width="42" stroke-linecap="round"/>
+            <path d="M426 285c72-22 104 12 98 58-6 37-34 49-82 32" fill="none" stroke="url(#cup-handle)" stroke-width="27" stroke-linecap="round"/>
+            <path d="M192 233c6 85 18 156 38 185 23 35 148 43 178 4 23-30 33-112 39-189Z" fill="url(#cup-ceramic)" stroke="#f8f0e4" stroke-width="5"/>
+            <path d="M204 278c7 70 17 116 29 139" fill="none" stroke="#fffaf2" stroke-width="8" opacity=".45" stroke-linecap="round"/>
+            <ellipse cx="323" cy="233" rx="132" ry="35" fill="#f5ecdf" stroke="#fff8ed" stroke-width="5"/>
+            <ellipse cx="323" cy="232" rx="114" ry="25" fill="url(#cup-coffee)"/>
+            <ellipse cx="323" cy="232" rx="107" ry="21" fill="none" stroke="#d39a65" stroke-width="3" opacity=".9"/>
+            <path d="M321 247c-7-14-6-27 4-37 12-12 34-12 38-1 4 10-10 19-25 16-13-3-20-13-16-22 6-14 30-18 47-8" fill="none" stroke="#f5dfbe" stroke-width="5" stroke-linecap="round"/>
+            <path d="M261 308c34 8 82 8 119-1" fill="none" stroke="#bd7950" stroke-width="3" opacity=".5"/>
+            <circle cx="323" cy="342" r="21" fill="#c86b42" opacity=".95"/>
+            <text x="323" y="349" fill="#f6e8d6" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-style="italic">WR</text>
+          </svg>
+        </div>
+        <div class="cup-stage-foot"><span>DRAG TO TURN · ARROW KEYS</span><span>GOOD COFFEE · OPEN PAGES</span></div>
+      </div>
       <div class="about-sticker"><strong>Pause.<br>Pour.<br>Begin.</strong><span>Pages welcome</span></div>
-      <div class="about-caption"><span>The ritual</span><span>Coffee · Coast · Conversation</span></div>
     </div>
     <div class="about-copy reveal reveal-delay-1">
       <span class="eyebrow">The Writer's Room · Rushikonda, Vizag</span>
@@ -331,6 +391,323 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 <footer class="footer"><div class="footer-top"><a class="footer-brand" href="#home">The Writer's <em>Room.</em></a><a class="footer-cta" href="#visit">Come see for yourself ↗</a></div><div class="footer-bottom"><span>© <span id="year"></span> The Writer's Room · Rushikonda, Vizag</span><div class="footer-links"><a href="#story">Story</a><a href="#menu">Menu</a><a href="#gallery">Moments</a><a href="#visit">Visit</a></div><span>Made for slow afternoons.</span></div></footer>
 <script>
 (function(){
+
+  const cupViewer=document.querySelector('[data-cup-viewer]');
+  if(cupViewer){
+    const cupCanvas=cupViewer.querySelector('.cup-canvas');
+    const reduceCupMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let cupYaw=-16;
+    let cupPitch=7;
+    let cupRoll=0;
+    let hoverPitch=0;
+    let hoverRoll=0;
+    let yawVelocity=0;
+    let lastPointerX=0;
+    let lastPointerTime=0;
+    let pointerDrag=null;
+    let resumeAutoRotateAt=0;
+    let cupSceneReady=false;
+    let cupVisible=false;
+    let cupFrame=0;
+    let cupRenderer=null;
+    let cupCamera=null;
+    let cupScene=null;
+    let cupModel=null;
+    let cupFloat=null;
+    let steamTrails=[];
+    let rippleMaterial=null;
+    let previousFrame=0;
+
+    function paintFallbackPose(){
+      cupViewer.style.setProperty('--cup-yaw',cupYaw+'deg');
+      cupViewer.style.setProperty('--cup-pitch',(cupPitch+hoverPitch)+'deg');
+    }
+
+    function setPointerPose(event){
+      if(pointerDrag){
+        const deltaX=event.clientX-pointerDrag.startX;
+        const deltaY=event.clientY-pointerDrag.startY;
+        cupYaw=pointerDrag.startYaw+deltaX*.45;
+        cupPitch=Math.max(-18,Math.min(24,pointerDrag.startPitch+deltaY*.28));
+        const now=performance.now();
+        const elapsed=Math.max(12,now-lastPointerTime);
+        yawVelocity=Math.max(-190,Math.min(190,(event.clientX-lastPointerX)/elapsed*450));
+        lastPointerX=event.clientX;
+        lastPointerTime=now;
+        hoverPitch=0;
+        hoverRoll=0;
+      }else{
+        const bounds=cupViewer.getBoundingClientRect();
+        const horizontal=(event.clientX-bounds.left)/Math.max(1,bounds.width);
+        const vertical=(event.clientY-bounds.top)/Math.max(1,bounds.height);
+        hoverRoll=(horizontal-.5)*9;
+        hoverPitch=(.5-vertical)*9;
+      }
+      paintFallbackPose();
+    }
+
+    cupViewer.addEventListener('pointerdown',function(event){
+      if(event.pointerType==='mouse'&&event.button!==0)return;
+      pointerDrag={pointerId:event.pointerId,startX:event.clientX,startY:event.clientY,startYaw:cupYaw,startPitch:cupPitch};
+      lastPointerX=event.clientX;
+      lastPointerTime=performance.now();
+      resumeAutoRotateAt=performance.now()+2100;
+      cupViewer.classList.add('is-dragging');
+      cupViewer.setPointerCapture(event.pointerId);
+    });
+    cupViewer.addEventListener('pointermove',setPointerPose);
+    function releaseCupPointer(event){
+      if(!pointerDrag||pointerDrag.pointerId!==event.pointerId)return;
+      pointerDrag=null;
+      cupViewer.classList.remove('is-dragging');
+      resumeAutoRotateAt=performance.now()+2100;
+    }
+    cupViewer.addEventListener('pointerup',releaseCupPointer);
+    cupViewer.addEventListener('pointercancel',releaseCupPointer);
+    cupViewer.addEventListener('pointerleave',function(){
+      if(pointerDrag)return;
+      hoverPitch=0;
+      hoverRoll=0;
+      paintFallbackPose();
+    });
+    cupViewer.addEventListener('keydown',function(event){
+      const step=event.shiftKey?14:7;
+      if(event.key==='ArrowLeft')cupYaw-=step;
+      else if(event.key==='ArrowRight')cupYaw+=step;
+      else if(event.key==='ArrowUp')cupPitch=Math.max(-18,cupPitch-step);
+      else if(event.key==='ArrowDown')cupPitch=Math.min(24,cupPitch+step);
+      else if(event.key==='Home'){cupYaw=-16;cupPitch=7}
+      else return;
+      event.preventDefault();
+      resumeAutoRotateAt=performance.now()+2100;
+      paintFallbackPose();
+    });
+    cupViewer.addEventListener('dblclick',function(){
+      cupYaw=-16;
+      cupPitch=7;
+      yawVelocity=0;
+      resumeAutoRotateAt=performance.now()+2100;
+      paintFallbackPose();
+    });
+
+    function loadThreeLibrary(){
+      if(window.THREE)return Promise.resolve();
+      return new Promise(function(resolve,reject){
+        const library=document.createElement('script');
+        library.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+        library.async=true;
+        library.onload=resolve;
+        library.onerror=reject;
+        document.head.appendChild(library);
+      });
+    }
+
+    function makeCoffeeStroke(THREE,coordinates,height,material,radius){
+      const points=coordinates.map(function(point){return new THREE.Vector3(point[0],height,point[1])});
+      const curve=new THREE.CatmullRomCurve3(points);
+      const mesh=new THREE.Mesh(new THREE.TubeGeometry(curve,32,radius,7,false),material);
+      cupModel.add(mesh);
+      return mesh;
+    }
+
+    function createCoffeeScene(){
+      const THREE=window.THREE;
+      cupScene=new THREE.Scene();
+      cupCamera=new THREE.PerspectiveCamera(32,1,.1,60);
+      cupCamera.position.set(0,2.15,7.5);
+      cupCamera.lookAt(0,.9,0);
+      cupRenderer=new THREE.WebGLRenderer({canvas:cupCanvas,alpha:true,antialias:true,powerPreference:'low-power'});
+      cupRenderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));
+      cupRenderer.setClearColor(0x000000,0);
+      cupRenderer.outputEncoding=THREE.sRGBEncoding;
+      cupRenderer.toneMapping=THREE.ACESFilmicToneMapping;
+      cupRenderer.toneMappingExposure=1.08;
+
+      cupScene.add(new THREE.HemisphereLight(0xf9e6cc,0x25130b,1.25));
+      const keyLight=new THREE.DirectionalLight(0xffd7a6,2.25);
+      keyLight.position.set(-3.5,5,4);
+      cupScene.add(keyLight);
+      const fillLight=new THREE.PointLight(0xf27a42,1.5,10);
+      fillLight.position.set(3,2.2,3);
+      cupScene.add(fillLight);
+      const rimLight=new THREE.PointLight(0xffd8b0,2.1,10);
+      rimLight.position.set(1.4,3,-3);
+      cupScene.add(rimLight);
+
+      cupFloat=new THREE.Group();
+      cupScene.add(cupFloat);
+      cupModel=new THREE.Group();
+      cupModel.position.x=.12;
+      cupFloat.add(cupModel);
+
+      const porcelain=new THREE.MeshPhysicalMaterial({color:0xe9dfd1,roughness:.2,metalness:.015,clearcoat:.9,clearcoatRoughness:.18});
+      const saucerMaterial=new THREE.MeshPhysicalMaterial({color:0xd9c9b5,roughness:.24,clearcoat:.8,clearcoatRoughness:.22});
+      const coffeeMaterial=new THREE.MeshPhysicalMaterial({color:0x36190f,roughness:.16,metalness:.05,clearcoat:1,clearcoatRoughness:.08});
+      const cremaMaterial=new THREE.MeshBasicMaterial({color:0xd79558});
+      const foamMaterial=new THREE.MeshBasicMaterial({color:0xf4dfc0});
+
+      const shadowCanvas=document.createElement('canvas');
+      shadowCanvas.width=128;
+      shadowCanvas.height=128;
+      const shadowContext=shadowCanvas.getContext('2d');
+      const shadowGradient=shadowContext.createRadialGradient(64,64,8,64,64,62);
+      shadowGradient.addColorStop(0,'rgba(0,0,0,.56)');
+      shadowGradient.addColorStop(.55,'rgba(0,0,0,.25)');
+      shadowGradient.addColorStop(1,'rgba(0,0,0,0)');
+      shadowContext.fillStyle=shadowGradient;
+      shadowContext.fillRect(0,0,128,128);
+      const shadowTexture=new THREE.CanvasTexture(shadowCanvas);
+      const groundShadow=new THREE.Mesh(new THREE.PlaneGeometry(4.2,3.2),new THREE.MeshBasicMaterial({map:shadowTexture,transparent:true,depthWrite:false}));
+      groundShadow.rotation.x=-Math.PI/2;
+      groundShadow.position.y=.008;
+      cupModel.add(groundShadow);
+
+      const saucerProfile=[[0,0],[.92,0],[1.12,.025],[1.36,.075],[1.46,.12],[1.43,.16],[1.3,.13],[1.08,.09],[0,.08]].map(function(point){return new THREE.Vector2(point[0],point[1])});
+      const saucer=new THREE.Mesh(new THREE.LatheGeometry(saucerProfile,96),saucerMaterial);
+      saucer.position.y=.06;
+      cupModel.add(saucer);
+      const saucerLine=new THREE.Mesh(new THREE.TorusGeometry(1.22,.012,8,96),new THREE.MeshBasicMaterial({color:0xb87952,transparent:true,opacity:.75}));
+      saucerLine.rotation.x=Math.PI/2;
+      saucerLine.position.y=.17;
+      cupModel.add(saucerLine);
+
+      const handle=new THREE.Mesh(new THREE.TorusGeometry(.39,.085,20,64),porcelain);
+      handle.position.set(.91,.77,0);
+      cupModel.add(handle);
+      const cupProfile=[[0,.02],[.67,.02],[.76,.05],[.81,.14],[.9,.91],[.92,1.02],[.89,1.045],[.83,1.005],[.75,.22],[.69,.17],[0,.17]].map(function(point){return new THREE.Vector2(point[0],point[1])});
+      const cupBody=new THREE.Mesh(new THREE.LatheGeometry(cupProfile,112),porcelain);
+      cupBody.position.y=.19;
+      cupModel.add(cupBody);
+
+      const rim=new THREE.Mesh(new THREE.TorusGeometry(.875,.025,10,96),new THREE.MeshPhysicalMaterial({color:0xf8f0e5,roughness:.18,clearcoat:.9}));
+      rim.rotation.x=Math.PI/2;
+      rim.position.y=1.225;
+      cupModel.add(rim);
+      const coffeeSurface=new THREE.Mesh(new THREE.CylinderGeometry(.805,.805,.018,96),coffeeMaterial);
+      coffeeSurface.position.y=1.185;
+      cupModel.add(coffeeSurface);
+      const cremaRing=new THREE.Mesh(new THREE.TorusGeometry(.68,.09,12,72),cremaMaterial);
+      cremaRing.rotation.x=Math.PI/2;
+      cremaRing.position.y=1.2;
+      cupModel.add(cremaRing);
+      const latteStem=makeCoffeeStroke(THREE,[[0,.53],[0,.31],[0,.1],[0,-.12],[0,-.38]],1.205,foamMaterial,.012);
+      for(let index=0;index<4;index++){
+        const z=.29-index*.15;
+        const length=.21-index*.018;
+        makeCoffeeStroke(THREE,[[0,z],[-length*.45,z+.035],[-length,z+.12]],1.205,foamMaterial,.012);
+        makeCoffeeStroke(THREE,[[0,z],[length*.45,z+.035],[length,z+.12]],1.205,foamMaterial,.012);
+      }
+      makeCoffeeStroke(THREE,[[-.21,.29],[-.09,.17],[0,.05],[.1,-.07],[.18,-.21]],1.206,cremaMaterial,.007);
+      latteStem.renderOrder=2;
+
+      const cupStripe=new THREE.Mesh(new THREE.TorusGeometry(.817,.012,8,96),new THREE.MeshBasicMaterial({color:0xc9784f}));
+      cupStripe.rotation.x=Math.PI/2;
+      cupStripe.position.y=.56;
+      cupModel.add(cupStripe);
+      const makerMark=new THREE.Mesh(new THREE.CircleGeometry(.145,48),new THREE.MeshBasicMaterial({color:0xc97950}));
+      makerMark.position.set(0,.69,.84);
+      cupModel.add(makerMark);
+      const makerDot=new THREE.Mesh(new THREE.CircleGeometry(.027,24),new THREE.MeshBasicMaterial({color:0xf5e7d4}));
+      makerDot.position.set(0,.69,.847);
+      cupModel.add(makerDot);
+
+      const steamGroup=new THREE.Group();
+      steamGroup.position.y=1.24;
+      cupModel.add(steamGroup);
+      steamTrails=[];
+      for(let index=0;index<3;index++){
+        const offset=(index-1)*.17;
+        const steamCurve=new THREE.CatmullRomCurve3([
+          new THREE.Vector3(offset,0,0),
+          new THREE.Vector3(offset-.06,.2,0),
+          new THREE.Vector3(offset+.09,.42,0),
+          new THREE.Vector3(offset-.02,.66,0),
+          new THREE.Vector3(offset+.05,.84,0)
+        ]);
+        const steamMaterial=new THREE.MeshBasicMaterial({color:0xf4dfc5,transparent:true,opacity:.26,depthWrite:false});
+        const steamMesh=new THREE.Mesh(new THREE.TubeGeometry(steamCurve,42,.014,7,false),steamMaterial);
+        steamGroup.add(steamMesh);
+        steamTrails.push({mesh:steamMesh,material:steamMaterial,phase:index*1.8});
+      }
+
+      rippleMaterial=new THREE.MeshBasicMaterial({color:0xe6a06c,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false});
+      const coffeeRipple=new THREE.Mesh(new THREE.RingGeometry(.18,.205,64),rippleMaterial);
+      coffeeRipple.rotation.x=-Math.PI/2;
+      coffeeRipple.position.set(.12,1.207,.02);
+      cupModel.add(coffeeRipple);
+
+      const dimensions=cupViewer.getBoundingClientRect();
+      resizeCoffeeScene(dimensions.width,dimensions.height);
+      cupViewer.classList.add('is-rendered');
+      cupSceneReady=true;
+    }
+
+    function resizeCoffeeScene(width,height){
+      if(!cupRenderer||!cupCamera||width<1||height<1)return;
+      const ratio=width/height;
+      cupCamera.aspect=ratio;
+      cupCamera.position.z=ratio<.65?9.2:ratio<.9?8:7.3;
+      cupCamera.fov=ratio<.65?34:32;
+      cupCamera.lookAt(0,.91,0);
+      cupCamera.updateProjectionMatrix();
+      cupRenderer.setSize(width,height,false);
+    }
+
+    function drawCoffeeScene(timestamp){
+      if(!cupVisible||!cupSceneReady)return;
+      const delta=previousFrame?Math.min((timestamp-previousFrame)/1000,.05):.016;
+      previousFrame=timestamp;
+      const now=performance.now();
+      if(!pointerDrag){
+        if(Math.abs(yawVelocity)>.08){
+          cupYaw+=yawVelocity*delta;
+          yawVelocity*=Math.exp(-3.2*delta);
+        }else if(!reduceCupMotion&&now>resumeAutoRotateAt){
+          cupYaw+=5.5*delta;
+        }
+      }
+      const targetPitch=(cupPitch+hoverPitch)*Math.PI/180;
+      const targetRoll=hoverRoll*Math.PI/180;
+      cupModel.rotation.y=window.THREE.MathUtils.degToRad(cupYaw);
+      cupModel.rotation.x+=(targetPitch-cupModel.rotation.x)*Math.min(1,delta*5);
+      cupModel.rotation.z+=(targetRoll-cupModel.rotation.z)*Math.min(1,delta*5);
+      cupFloat.position.y=reduceCupMotion?0:Math.sin(timestamp*.00125)*.055;
+      cupFloat.rotation.z+=(Math.sin(timestamp*.0007)*.012-cupFloat.rotation.z)*Math.min(1,delta*2);
+      steamTrails.forEach(function(trail){
+        trail.material.opacity=reduceCupMotion ? .2 : .16+((Math.sin(timestamp*.0014+trail.phase)+1)*.09);
+        trail.mesh.position.y=reduceCupMotion?0:Math.sin(timestamp*.001+trail.phase)*.055;
+      });
+      if(rippleMaterial)rippleMaterial.opacity=reduceCupMotion?0:.08+((Math.sin(timestamp*.0011)+1)*.055);
+      cupRenderer.render(cupScene,cupCamera);
+      cupFrame=requestAnimationFrame(drawCoffeeScene);
+    }
+
+    function beginCoffeeViewer(){
+      if(cupSceneReady||!cupVisible)return;
+      loadThreeLibrary().then(function(){
+        if(!cupVisible)return;
+        try{
+          createCoffeeScene();
+          if(!cupFrame)cupFrame=requestAnimationFrame(drawCoffeeScene);
+          const resizeObserver=new ResizeObserver(function(){
+            const dimensions=cupViewer.getBoundingClientRect();
+            resizeCoffeeScene(dimensions.width,dimensions.height);
+          });
+          resizeObserver.observe(cupViewer);
+        }catch(error){
+          cupViewer.dataset.viewer='fallback';
+        }
+      }).catch(function(){cupViewer.dataset.viewer='fallback'});
+    }
+
+    const cupVisibilityObserver=new IntersectionObserver(function(entries){
+      cupVisible=entries.some(function(entry){return entry.isIntersecting});
+      if(cupVisible)beginCoffeeViewer();
+      else if(cupFrame){cancelAnimationFrame(cupFrame);cupFrame=0;previousFrame=0}
+    },{rootMargin:'180px'});
+    cupVisibilityObserver.observe(cupViewer);
+    paintFallbackPose();
+  }
 
   // Scroll-scrubbed coffee ritual: bean → grounds → pour → steam → identity.
   (function(){
