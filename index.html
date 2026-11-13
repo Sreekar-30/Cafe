@@ -74,26 +74,17 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .section-label{display:flex;justify-content:space-between;align-items:center;gap:20px;font:10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:clamp(42px,7vw,90px)}
 .section-label .number{color:var(--orange)}
 .about{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(44px,9vw,140px);align-items:center}
-.about-visual{position:relative;min-height:680px;isolation:isolate}
-.cup-stage{position:absolute;inset:0 12% 8% 0;overflow:hidden;border:1px solid rgba(242,234,220,.14);background:radial-gradient(ellipse at 55% 42%,#49301f 0,#271a12 45%,#17120e 100%);cursor:grab;touch-action:pan-y;user-select:none}
+.about-scroll-track{position:relative;height:180vh;margin-top:clamp(42px,6vw,76px)}
+.about-scroll-track .about{position:sticky;top:10vh;height:80vh;min-height:0;align-items:center}
+.about-visual{position:relative;height:100%;min-height:0;isolation:isolate}
+.cup-stage{position:absolute;inset:0 12% 8% 0;overflow:hidden;border:1px solid rgba(242,234,220,.14);background:radial-gradient(ellipse at 55% 42%,#49301f 0,#271a12 45%,#17120e 100%);cursor:default;touch-action:pan-y;user-select:none}
 .cup-stage:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.035),transparent 42%),radial-gradient(ellipse at 50% 88%,rgba(240,100,53,.13),transparent 48%);pointer-events:none;z-index:0}
 .cup-stage:after{content:"";position:absolute;inset:12px;border:1px solid rgba(242,234,220,.08);pointer-events:none;z-index:3}
 .cup-stage:focus-visible{outline:1px solid var(--orange2);outline-offset:5px}
-.cup-stage.is-dragging{cursor:grabbing}
 .cup-stage-meta,.cup-stage-foot{position:absolute;z-index:4;left:22px;right:22px;display:flex;justify-content:space-between;gap:14px;font:8px var(--mono);letter-spacing:.17em;text-transform:uppercase;color:rgba(242,234,220,.76)}
 .cup-stage-meta{top:22px}
 .cup-stage-foot{bottom:20px;color:var(--orange2)}
-.cup-canvas{position:absolute;inset:0;z-index:1;width:100%;height:100%;opacity:0;transition:opacity .8s ease}
-.cup-stage.is-rendered .cup-canvas{opacity:1}
-.cup-fallback-wrap{position:absolute;inset:8% 0 7%;z-index:1;display:grid;place-items:center;animation:cup-float 4.6s ease-in-out infinite}
-.cup-fallback{position:relative;z-index:1;width:min(100%,620px);height:auto;max-height:100%;object-fit:contain;transform:perspective(1100px) rotateX(var(--cup-pitch,0deg)) rotateY(var(--cup-yaw,0deg));transition:transform .32s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 20px 28px rgba(0,0,0,.32))}
-.cup-steam-overlay{position:absolute;z-index:2;top:-23%;left:40%;width:20%;height:34%;overflow:visible;pointer-events:none}
-.cup-steam-path{fill:none;stroke:#fff2df;stroke-width:3.5;stroke-linecap:round;opacity:0;filter:drop-shadow(0 0 5px rgba(255,238,209,.35));animation:steam-rise 3.6s ease-in-out infinite}
-.cup-steam-path:nth-child(2){animation-delay:1.15s}
-.cup-steam-path:nth-child(3){animation-delay:2.2s}
-.cup-stage.is-rendered .cup-fallback-wrap{opacity:0;visibility:hidden;transition:opacity .6s}
-@keyframes cup-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
-@keyframes steam-rise{0%{opacity:0;transform:translateY(12px)}28%{opacity:.5}100%{opacity:0;transform:translateY(-22px)}}
+.cup-scroll-video{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:contain;background:#17120e}
 .about-sticker{position:absolute;right:0;bottom:0;z-index:5;width:clamp(136px,16vw,196px);aspect-ratio:1;background:var(--orange);color:var(--ink);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;transform:rotate(6deg);box-shadow:0 18px 50px rgba(0,0,0,.3)}
 .about-sticker strong{font:italic 600 clamp(30px,5vw,65px)/.9 var(--serif);letter-spacing:-.06em}
 .about-sticker span{font:9px var(--mono);letter-spacing:.16em;text-transform:uppercase;margin-top:14px}
@@ -198,8 +189,8 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(min-width:1500px){.hero h1{font-size:200px}}
 @media(max-width:900px){.nav-links{gap:16px}.nav-links a{font-size:9px}.about{gap:45px}.about-visual{min-height:560px}.experience-card,.experience-card:nth-child(n){grid-column:span 6;min-height:340px}.experience-card:nth-child(3),.experience-card:nth-child(6){grid-column:span 6}.menu-grid{grid-template-columns:repeat(2,1fr)}.visit{gap:40px}}
 @media(max-width:650px){:root{--gutter:22px}.site-nav{padding:17px var(--gutter)}.brand{font-size:19px}.menu-toggle{display:block;z-index:2}.nav-links{position:absolute;top:0;left:0;right:0;padding:90px 24px 28px;background:rgba(23,19,15,.98);display:flex;flex-direction:column;align-items:flex-start;gap:23px;transform:translateY(-120%);transition:transform .45s cubic-bezier(.77,0,.18,1)}.nav-links.open{transform:translateY(0)}.nav-links a{font-size:12px}.nav-book{padding:12px 16px}.hero{min-height:850px;min-height:100svh;padding-top:150px;padding-bottom:95px}.hero-topline{top:92px;font-size:8px}.hero-topline span:last-child{display:none}.hero h1{font-size:clamp(68px,17vw,112px);margin:24px 0 28px}.hero h1 .indent{padding-left:28px}.hero-bottom{display:block}.hero-description{font-size:13px;margin-bottom:24px}.hero-actions{gap:8px}.button{padding:14px 15px;font-size:9px}.hero-index{display:none}.marquee{padding:12px 0}.marquee span{font-size:21px}.section{padding-top:90px;padding-bottom:90px}.section-label{margin-bottom:42px}.about{grid-template-columns:1fr;gap:60px}.about-visual{min-height:470px;margin-right:20px}.about-copy h2{font-size:64px}.experience-heading{display:block}.experience-heading h2{font-size:76px;margin-bottom:22px}.experience-heading p{max-width:300px}.experience-grid{gap:10px}.experience-card,.experience-card:nth-child(n){grid-column:span 12;min-height:360px}.menu-head{display:block}.menu-head h2{font-size:82px;margin-bottom:18px}.menu-grid{grid-template-columns:1fr}.menu-photo{height:280px}.menu-card p{min-height:0}.gallery-title{display:block}.gallery-title h2{font-size:74px;margin-bottom:18px}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 170px 190px;gap:8px}.gallery-item:first-child{grid-row:span 2}.gallery-item:nth-child(4){grid-column:1/-1}.gallery-caption{font-size:8px;left:10px;bottom:10px}.big-quote blockquote{font-size:54px}.visit{grid-template-columns:1fr;gap:48px}.visit-copy h2{font-size:78px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.visit-form{padding:24px}.footer-top{align-items:flex-start;flex-direction:column}.footer-bottom{font-size:8px}.footer-links{gap:14px}.cursor,.cursor-ring{display:none}}
-@media(max-width:900px){.about{grid-template-columns:1fr;gap:60px}.about-visual{min-height:600px;max-width:720px;width:100%}}
-@media(max-width:650px){.about-visual{min-height:460px;margin-right:16px}.cup-stage-meta,.cup-stage-foot{left:14px;right:14px;font-size:7px}.cup-stage-meta span:last-child,.cup-stage-foot span:last-child{display:none}.about-sticker{width:132px}.cup-stage{inset:0 10% 8% 0}}
+@media(max-width:900px){.about-scroll-track{height:170vh}.about-scroll-track .about{top:8vh;height:84vh;grid-template-columns:1fr;grid-template-rows:42vh 38vh;gap:14px}.about-visual{min-height:0;width:100%;max-width:720px}.about-copy{align-self:start}.about-copy h2{font-size:clamp(39px,8vw,62px);margin:12px 0 16px}.about-copy p{font-size:12px;line-height:1.55;margin-bottom:9px}.text-link{margin-top:10px;padding-bottom:6px;font-size:9px}.story-note{margin-top:12px;font-size:15px}}
+@media(max-width:650px){.about-scroll-track{height:170vh;margin-top:32px}.about-scroll-track .about{top:7vh;height:86vh;grid-template-rows:42vh 44vh;gap:10px}.about-visual{margin-right:16px}.cup-stage-meta,.cup-stage-foot{left:14px;right:14px;font-size:7px}.cup-stage-meta span:last-child,.cup-stage-foot span:last-child{display:none}.about-sticker{width:132px}.cup-stage{inset:0 10% 8% 0}.about-copy h2{font-size:clamp(38px,10vw,50px);margin:10px 0 12px}.about-copy p{font-size:11px;line-height:1.45;margin-bottom:7px}.about-copy .eyebrow{font-size:8px}.about-copy .text-link{margin-top:7px}.story-note{margin-top:8px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
 
 /* SCROLL-DRIVEN COFFEE INTRO */
@@ -261,20 +252,15 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>GOOD COFFEE. BETTER STORIES.</span><b>✳</b><span>MADE FOR THE IN-BETWEEN.</span><b>✳</b><span>GOOD COFFEE. BETTER STORIES.</span><b>✳</b><span>MADE FOR THE IN-BETWEEN.</span><b>✳</b></div></div>
 <section class="section" id="story">
   <div class="section-label"><span><span class="number">01 /</span> Our story</span><span>A little space to slow down</span></div>
+  <div class="about-scroll-track" data-story-scroll-track>
   <div class="about">
     <div class="about-visual reveal">
-      <div class="cup-stage" data-cup-viewer tabindex="0" role="group" aria-label="Interactive view of the coffee photo. Drag gently to tilt it or use the arrow keys.">
+      <div class="cup-stage" role="group" aria-label="A coffee moment, revealed as you scroll.">
         <div class="cup-stage-meta"><span>01 — THE FIRST POUR</span><span>RUSHIKONDA · 17°48′ N</span></div>
-        <canvas class="cup-canvas" aria-hidden="true"></canvas>
-        <div class="cup-fallback-wrap" aria-hidden="true">
-          <img class="cup-fallback" src="our-story-cup.svg" alt="">
-          <svg class="cup-steam-overlay" viewBox="0 0 120 180" aria-hidden="true">
-            <path class="cup-steam-path" d="M28 160c-18-28 14-47 3-75-6-16-1-31 12-48"/>
-            <path class="cup-steam-path" d="M61 170c-15-30 19-51 7-81-7-17-2-34 10-55"/>
-            <path class="cup-steam-path" d="M93 158c-19-27 13-46 5-72-5-17 0-32 12-48"/>
-          </svg>
-        </div>
-        <div class="cup-stage-foot"><span>DRAG TO TILT · ARROW KEYS</span><span>GOOD COFFEE · OPEN PAGES</span></div>
+        <video class="cup-scroll-video" data-story-scroll-video muted playsinline preload="auto" poster="our-story-cup.svg" aria-label="Coffee video controlled by scrolling">
+          <source src="gemini_generated_video_122b0436.mp4" type="video/mp4">
+        </video>
+        <div class="cup-stage-foot"><span>SCROLL TO MOVE · SOUND OFF</span><span>A MOMENT IN MOTION</span></div>
       </div>
       <div class="about-sticker"><strong>Pause.<br>Pour.<br>Begin.</strong><span>Pages welcome</span></div>
     </div>
@@ -286,6 +272,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
       <a class="text-link" href="#experience">Find your kind of afternoon <span>↗</span></a>
       <div class="story-note"><span>✳</span> Take the long way through your day.</div>
     </div>
+  </div>
   </div>
 </section>
 <section class="section experience" id="experience">
@@ -352,240 +339,31 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 <script>
 (function(){
 
-  const cupViewer=document.querySelector('[data-cup-viewer]');
-  if(cupViewer){
-    const cupCanvas=cupViewer.querySelector('.cup-canvas');
-    const reduceCupMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let cupYaw=0;
-    let cupPitch=0;
-    let hoverPitch=0;
-    let hoverRoll=0;
-    let yawVelocity=0;
-    let lastPointerX=0;
-    let lastPointerTime=0;
-    let pointerDrag=null;
-    let resumeAutoRotateAt=0;
-    let cupSceneReady=false;
-    let cupSceneLoading=false;
-    let cupVisible=false;
-    let cupFrame=0;
-    let cupRenderer=null;
-    let cupCamera=null;
-    let cupScene=null;
-    let cupModel=null;
-    let cupFloat=null;
-    let steamTrails=[];
-    let cupTexture=null;
-    let previousFrame=0;
-
-    function paintFallbackPose(){
-      cupViewer.style.setProperty('--cup-yaw',cupYaw+'deg');
-      cupViewer.style.setProperty('--cup-pitch',(cupPitch+hoverPitch)+'deg');
+  const storyTrack=document.querySelector('[data-story-scroll-track]');
+  const stickyStory=storyTrack&&storyTrack.querySelector('.about');
+  const storyVideo=document.querySelector('[data-story-scroll-video]');
+  if(storyTrack&&stickyStory&&storyVideo){
+    const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let storyScrollFrame=0;
+    function syncStoryVideo(){
+      storyScrollFrame=0;
+      if(prefersReducedMotion||!Number.isFinite(storyVideo.duration)||storyVideo.duration<=0)return;
+      const trackTop=storyTrack.getBoundingClientRect().top+window.scrollY;
+      const stickyTop=parseFloat(window.getComputedStyle(stickyStory).top)||0;
+      const scrollDistance=Math.max(1,storyTrack.offsetHeight-stickyStory.offsetHeight);
+      const progress=Math.max(0,Math.min(1,(window.scrollY-(trackTop-stickyTop))/scrollDistance));
+      const targetTime=progress*storyVideo.duration;
+      if(Math.abs(storyVideo.currentTime-targetTime)>.04)storyVideo.currentTime=targetTime;
     }
-
-    function setPointerPose(event){
-      if(pointerDrag){
-        const deltaX=event.clientX-pointerDrag.startX;
-        const deltaY=event.clientY-pointerDrag.startY;
-        cupYaw=Math.max(-18,Math.min(18,pointerDrag.startYaw+deltaX*.24));
-        cupPitch=Math.max(-8,Math.min(8,pointerDrag.startPitch+deltaY*.14));
-        const now=performance.now();
-        const elapsed=Math.max(12,now-lastPointerTime);
-        yawVelocity=Math.max(-75,Math.min(75,(event.clientX-lastPointerX)/elapsed*180));
-        lastPointerX=event.clientX;
-        lastPointerTime=now;
-        hoverPitch=0;
-        hoverRoll=0;
-      }else{
-        const bounds=cupViewer.getBoundingClientRect();
-        const horizontal=(event.clientX-bounds.left)/Math.max(1,bounds.width);
-        const vertical=(event.clientY-bounds.top)/Math.max(1,bounds.height);
-        hoverRoll=(horizontal-.5)*3;
-        hoverPitch=(.5-vertical)*3;
-      }
-      paintFallbackPose();
+    function requestStoryVideoSync(){
+      if(!storyScrollFrame)storyScrollFrame=requestAnimationFrame(syncStoryVideo);
     }
-
-    cupViewer.addEventListener('pointerdown',function(event){
-      if(event.pointerType==='mouse'&&event.button!==0)return;
-      pointerDrag={pointerId:event.pointerId,startX:event.clientX,startY:event.clientY,startYaw:cupYaw,startPitch:cupPitch};
-      lastPointerX=event.clientX;
-      lastPointerTime=performance.now();
-      resumeAutoRotateAt=performance.now()+2100;
-      cupViewer.classList.add('is-dragging');
-      cupViewer.setPointerCapture(event.pointerId);
-    });
-    cupViewer.addEventListener('pointermove',setPointerPose);
-    function releaseCupPointer(event){
-      if(!pointerDrag||pointerDrag.pointerId!==event.pointerId)return;
-      pointerDrag=null;
-      cupViewer.classList.remove('is-dragging');
-      resumeAutoRotateAt=performance.now()+2100;
-    }
-    cupViewer.addEventListener('pointerup',releaseCupPointer);
-    cupViewer.addEventListener('pointercancel',releaseCupPointer);
-    cupViewer.addEventListener('pointerleave',function(){
-      if(pointerDrag)return;
-      hoverPitch=0;
-      hoverRoll=0;
-      paintFallbackPose();
-    });
-    cupViewer.addEventListener('keydown',function(event){
-      const step=event.shiftKey?8:4;
-      if(event.key==='ArrowLeft')cupYaw=Math.max(-18,cupYaw-step);
-      else if(event.key==='ArrowRight')cupYaw=Math.min(18,cupYaw+step);
-      else if(event.key==='ArrowUp')cupPitch=Math.max(-8,cupPitch-step);
-      else if(event.key==='ArrowDown')cupPitch=Math.min(8,cupPitch+step);
-      else if(event.key==='Home'){cupYaw=0;cupPitch=0}
-      else return;
-      event.preventDefault();
-      resumeAutoRotateAt=performance.now()+2100;
-      paintFallbackPose();
-    });
-    cupViewer.addEventListener('dblclick',function(){
-      cupYaw=0;
-      cupPitch=0;
-      yawVelocity=0;
-      resumeAutoRotateAt=performance.now()+2100;
-      paintFallbackPose();
-    });
-
-    function loadThreeLibrary(){
-      if(window.THREE)return Promise.resolve();
-      return new Promise(function(resolve,reject){
-        const library=document.createElement('script');
-        library.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-        library.async=true;
-        library.onload=resolve;
-        library.onerror=reject;
-        document.head.appendChild(library);
-      });
-    }
-
-    function createCoffeeScene(){
-      const THREE=window.THREE;
-      cupScene=new THREE.Scene();
-      cupCamera=new THREE.PerspectiveCamera(32,1,.1,60);
-      cupCamera.position.set(0,0,7.4);
-      cupCamera.lookAt(0,0,0);
-      cupRenderer=new THREE.WebGLRenderer({canvas:cupCanvas,alpha:true,antialias:true,powerPreference:'low-power'});
-      cupRenderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));
-      cupRenderer.setClearColor(0x000000,0);
-      cupRenderer.outputEncoding=THREE.sRGBEncoding;
-      cupRenderer.toneMapping=THREE.NoToneMapping;
-
-      cupFloat=new THREE.Group();
-      cupScene.add(cupFloat);
-      cupModel=new THREE.Group();
-      cupFloat.add(cupModel);
-
-      const loader=new THREE.TextureLoader();
-      loader.load('our-story-cup.svg',function(texture){
-        cupTexture=texture;
-        cupTexture.encoding=THREE.sRGBEncoding;
-        cupTexture.anisotropy=Math.min(4,cupRenderer.capabilities.getMaxAnisotropy());
-        const photo=new THREE.Mesh(
-          new THREE.PlaneGeometry(3.72,2.777),
-          new THREE.MeshBasicMaterial({map:cupTexture,side:THREE.DoubleSide,toneMapped:false})
-        );
-        cupModel.add(photo);
-
-        const steamGroup=new THREE.Group();
-        steamGroup.position.set(0,1.22,.02);
-        cupModel.add(steamGroup);
-        steamTrails=[];
-        for(let index=0;index<3;index++){
-          const offset=(index-1)*.16;
-          const steamCurve=new THREE.CatmullRomCurve3([
-            new THREE.Vector3(offset,0,0),
-            new THREE.Vector3(offset-.05,.15,0),
-            new THREE.Vector3(offset+.07,.31,0),
-            new THREE.Vector3(offset-.02,.47,0)
-          ]);
-          const steamMaterial=new THREE.MeshBasicMaterial({color:0xffedd8,transparent:true,opacity:.18,depthWrite:false});
-          const steamMesh=new THREE.Mesh(new THREE.TubeGeometry(steamCurve,32,.012,6,false),steamMaterial);
-          steamGroup.add(steamMesh);
-          steamTrails.push({mesh:steamMesh,material:steamMaterial,phase:index*1.8});
-        }
-
-        const dimensions=cupViewer.getBoundingClientRect();
-        resizeCoffeeScene(dimensions.width,dimensions.height);
-        cupViewer.classList.add('is-rendered');
-        cupSceneLoading=false;
-        cupSceneReady=true;
-        if(cupVisible&&!cupFrame)cupFrame=requestAnimationFrame(drawCoffeeScene);
-      },undefined,function(){cupSceneLoading=false;cupViewer.dataset.viewer='fallback'});
-    }
-
-    function resizeCoffeeScene(width,height){
-      if(!cupRenderer||!cupCamera||width<1||height<1)return;
-      const ratio=width/height;
-      cupCamera.aspect=ratio;
-      cupCamera.position.z=ratio<.65?9.6:ratio<.9?8.5:7.4;
-      cupCamera.fov=ratio<.65?34:32;
-      cupCamera.lookAt(0,0,0);
-      cupCamera.updateProjectionMatrix();
-      cupRenderer.setSize(width,height,false);
-    }
-
-    function drawCoffeeScene(timestamp){
-      if(!cupVisible||!cupSceneReady)return;
-      const delta=previousFrame?Math.min((timestamp-previousFrame)/1000,.05):.016;
-      previousFrame=timestamp;
-      const now=performance.now();
-      if(!pointerDrag){
-        if(Math.abs(yawVelocity)>.08){
-          cupYaw=Math.max(-18,Math.min(18,cupYaw+yawVelocity*delta));
-          yawVelocity*=Math.exp(-3.2*delta);
-        }
-      }
-      const targetPitch=(cupPitch+hoverPitch)*Math.PI/180;
-      const targetRoll=hoverRoll*Math.PI/180;
-      const gentleAutoTilt=!reduceCupMotion&&!pointerDrag&&now>resumeAutoRotateAt?Math.sin(now*.00065)*2.5:0;
-      cupModel.rotation.y=window.THREE.MathUtils.degToRad(cupYaw+gentleAutoTilt);
-      cupModel.rotation.x+=(targetPitch-cupModel.rotation.x)*Math.min(1,delta*5);
-      cupModel.rotation.z+=(targetRoll-cupModel.rotation.z)*Math.min(1,delta*5);
-      cupFloat.position.y=reduceCupMotion?0:Math.sin(timestamp*.00125)*.035;
-      cupFloat.rotation.z+=(Math.sin(timestamp*.0007)*.007-cupFloat.rotation.z)*Math.min(1,delta*2);
-      steamTrails.forEach(function(trail){
-        trail.material.opacity=reduceCupMotion ? .2 : .16+((Math.sin(timestamp*.0014+trail.phase)+1)*.09);
-        trail.mesh.position.y=reduceCupMotion?0:Math.sin(timestamp*.001+trail.phase)*.055;
-      });
-      cupRenderer.render(cupScene,cupCamera);
-      cupFrame=requestAnimationFrame(drawCoffeeScene);
-    }
-
-    function beginCoffeeViewer(){
-      if(cupSceneReady||cupSceneLoading||!cupVisible)return;
-      cupSceneLoading=true;
-      loadThreeLibrary().then(function(){
-        if(!cupVisible){cupSceneLoading=false;return}
-        try{
-          createCoffeeScene();
-          const resizeObserver=new ResizeObserver(function(){
-            const dimensions=cupViewer.getBoundingClientRect();
-            resizeCoffeeScene(dimensions.width,dimensions.height);
-          });
-          resizeObserver.observe(cupViewer);
-        }catch(error){
-          cupSceneLoading=false;
-          cupViewer.dataset.viewer='fallback';
-        }
-      }).catch(function(){cupSceneLoading=false;cupViewer.dataset.viewer='fallback'});
-    }
-
-    const cupVisibilityObserver=new IntersectionObserver(function(entries){
-      cupVisible=entries.some(function(entry){return entry.isIntersecting});
-      if(cupVisible){
-        if(cupSceneReady&&!cupFrame)cupFrame=requestAnimationFrame(drawCoffeeScene);
-        else beginCoffeeViewer();
-      }
-      else if(cupFrame){cancelAnimationFrame(cupFrame);cupFrame=0;previousFrame=0}
-    },{rootMargin:'180px'});
-    cupVisibilityObserver.observe(cupViewer);
-    paintFallbackPose();
+    storyVideo.pause();
+    storyVideo.addEventListener('loadedmetadata',requestStoryVideoSync);
+    window.addEventListener('scroll',requestStoryVideoSync,{passive:true});
+    window.addEventListener('resize',requestStoryVideoSync,{passive:true});
+    requestStoryVideoSync();
   }
-
   // Scroll-scrubbed coffee ritual: bean → grounds → pour → steam → identity.
   (function(){
     const section=document.querySelector('.coffee-journey');
