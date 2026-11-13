@@ -319,54 +319,16 @@ body.entry-open{overflow:hidden}
   .experience-scene-copy.is-entering{animation:none}
 }
 
-/* Editorial menu spread */
-.menu-section{position:relative;overflow:hidden;background:radial-gradient(ellipse at 15% 60%,rgba(130,77,44,.13),transparent 43%),#211b15}
-.menu-head{margin-bottom:30px}
-.menu-browser-bar{display:flex;justify-content:space-between;align-items:center;gap:22px;margin-bottom:24px}
-.menu-browser-label{font:9px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#a99a89;white-space:nowrap}
-.menu-browser-bar .menu-filters{margin:0;justify-content:flex-end}
-.menu-spread{display:grid;grid-template-columns:minmax(310px,.84fr) minmax(430px,1.16fr);align-items:stretch;gap:clamp(22px,4vw,58px)}
-.menu-feature-page{align-self:stretch;background:var(--paper);color:var(--ink);box-shadow:0 24px 70px rgba(0,0,0,.24);transform:rotate(-.35deg);transition:transform .35s}
-.menu-feature-page:hover{transform:rotate(0deg) translateY(-3px)}
-.menu-feature-photo{height:clamp(260px,27vw,370px);position:relative;overflow:hidden;background:#3c281b}
-.menu-feature-photo:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(13,10,8,.57));pointer-events:none}
-.menu-feature-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:opacity .25s,transform .7s}
-.menu-feature-page:hover .menu-feature-photo img{transform:scale(1.025)}
-.menu-feature-number,.menu-feature-caption{position:absolute;z-index:1;bottom:17px;color:#fff;font:10px var(--mono);letter-spacing:.15em;text-transform:uppercase}
-.menu-feature-number{left:20px;font-size:13px}
-.menu-feature-number i{font-style:normal;color:rgba(255,255,255,.62);font-size:10px}
-.menu-feature-caption{right:19px;font-size:8px;letter-spacing:.13em;color:rgba(255,255,255,.8)}
-.menu-feature-copy{padding:24px 27px 20px}
-.menu-feature-copy .menu-tag{font-size:9px}
-.menu-feature-copy h3{font:500 clamp(30px,3.2vw,45px)/.98 var(--serif);letter-spacing:-.05em;margin:11px 0;color:#211b15}
-.menu-feature-copy p{font:13px/1.7 var(--sans);color:#73685d;margin:0;min-height:44px}
-.menu-feature-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(33,27,21,.16);margin-top:18px;padding-top:13px}
-.menu-feature-foot .price{color:#c64e2b}
-.menu-feature-foot .menu-badge{color:#7e7265}
-.menu-index-page{display:flex;flex-direction:column;min-width:0;padding:4px 0 0}
-.menu-index-heading{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:16px;border-bottom:1px solid rgba(242,234,220,.25)}
-.menu-index-kicker{font:8px var(--mono);letter-spacing:.17em;text-transform:uppercase;color:var(--orange)}
-.menu-index-heading h3{font:500 clamp(30px,3.3vw,44px)/1 var(--serif);letter-spacing:-.045em;margin:8px 0 0;color:var(--paper)}
-.menu-index-count{font:9px var(--mono);letter-spacing:.15em;text-transform:uppercase;color:#a99a89;padding-bottom:4px}
-.menu-index-list{display:flex;flex-direction:column}
-.menu-index-row{position:relative;display:grid;grid-template-columns:86px minmax(0,1fr) 58px 16px;align-items:center;gap:15px;width:100%;min-height:82px;padding:8px 10px 8px 0;border:0;border-bottom:1px solid rgba(242,234,220,.13);background:transparent;color:var(--paper);text-align:left;cursor:pointer;transition:background .25s,padding .25s}
-.menu-index-row:before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:2px;background:var(--orange);transform:scaleY(0);transition:transform .25s}
-.menu-index-row:hover,.menu-index-row.is-selected{background:linear-gradient(90deg,rgba(240,100,53,.12),transparent 75%);padding-left:12px}
-.menu-index-row.is-selected:before{transform:scaleY(1)}
-.menu-index-row img{display:block;width:86px;height:64px;object-fit:cover;background:#33251a;filter:saturate(.92);transition:filter .25s,transform .3s}
-.menu-index-row:hover img,.menu-index-row.is-selected img{filter:saturate(1.12);transform:scale(1.025)}
-.menu-row-copy{display:flex;min-width:0;flex-direction:column;gap:5px}
-.menu-row-number{font:8px var(--mono);letter-spacing:.11em;text-transform:uppercase;color:#b5a796}
-.menu-row-title{font:500 clamp(17px,1.65vw,22px)/1.08 var(--serif);color:var(--paper)}
-.menu-row-price{font:italic 600 18px var(--serif);color:#f2a16f;text-align:right;white-space:nowrap}
-.menu-row-arrow{font:15px var(--sans);color:#9a8876;transition:transform .25s,color .25s}
-.menu-index-row:hover .menu-row-arrow,.menu-index-row.is-selected .menu-row-arrow{transform:translate(2px,-2px);color:var(--orange)}
-.menu-index-foot{display:flex;justify-content:space-between;gap:14px;padding-top:13px;color:#9c8d7d;font:8px var(--mono);letter-spacing:.12em;text-transform:uppercase}
-.menu-index-mark{color:var(--orange)}
-.menu-index-row[hidden]{display:none}
-@media(max-width:900px){.menu-spread{grid-template-columns:minmax(260px,.82fr) minmax(360px,1.18fr);gap:22px}.menu-index-row{grid-template-columns:72px minmax(0,1fr) 52px 14px;gap:11px;min-height:76px}.menu-index-row img{width:72px;height:58px}.menu-row-number{font-size:7px}.menu-feature-photo{height:280px}}
-@media(max-width:720px){.menu-browser-bar{align-items:flex-start;flex-direction:column;gap:12px}.menu-browser-bar .menu-filters{justify-content:flex-start}.menu-spread{grid-template-columns:1fr;gap:30px}.menu-feature-page{max-width:none;transform:none}.menu-feature-photo{height:clamp(230px,58vw,380px)}.menu-feature-copy{padding:21px 22px}.menu-index-page{padding-top:0}.menu-index-row{grid-template-columns:86px minmax(0,1fr) 58px 16px;min-height:80px}.menu-index-row img{width:86px;height:62px}.menu-row-number{font-size:8px}.menu-row-title{font-size:20px}}
-@media(max-width:440px){.menu-index-row{grid-template-columns:68px minmax(0,1fr) 48px 12px;gap:9px;min-height:72px}.menu-index-row img{width:68px;height:54px}.menu-row-title{font-size:17px}.menu-row-price{font-size:16px}.menu-feature-caption{font-size:7px}}
+/* Chapter menu: anchor navigation, no fragile filter state */
+.menu-section{background:#efe5d5;color:#241b15;overflow:hidden}.menu-section .section-label{color:#716355}.menu-section .section-label .number,.menu-section .menu-head h2 em{color:#d95532}.menu-section .menu-head{margin-bottom:40px}.menu-section .menu-head h2{color:#241b15}.menu-section .menu-note{color:#75695d;max-width:270px}
+.menu-chapter-nav{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid rgba(36,27,21,.28);margin-bottom:64px}.menu-chapter-nav a{display:grid;grid-template-columns:25px 1fr 16px;align-items:center;gap:8px;min-height:62px;padding:0 15px;color:#241b15;text-decoration:none;border-right:1px solid rgba(36,27,21,.18);transition:.2s}.menu-chapter-nav a:first-child{border-left:1px solid rgba(36,27,21,.18)}.menu-chapter-nav a:hover,.menu-chapter-nav a:focus-visible{background:#241b15;color:#f1e6d5;outline:none}.menu-chapter-nav span,.menu-chapter-nav i{font:9px var(--mono);font-style:normal;color:#cf5634}.menu-chapter-nav strong{font:500 16px var(--serif)}
+.menu-chapter{scroll-margin-top:95px;margin:0 0 62px}.menu-chapter>header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid rgba(36,27,21,.24);padding-bottom:13px;margin-bottom:18px}.menu-chapter>header small{font:8px var(--mono);letter-spacing:.16em;color:#877664}.menu-chapter>header h3{font:500 clamp(30px,4vw,50px)/.95 var(--serif);letter-spacing:-.045em;margin:9px 0 0}.menu-chapter>header>span{font:8px var(--mono);letter-spacing:.15em;color:#877664}
+.menu-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.menu-single{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(210px,.6fr);gap:22px}
+.menu-entry{background:#f8f1e6;border:1px solid rgba(36,27,21,.13);box-shadow:0 12px 32px rgba(57,38,22,.07);transition:transform .25s,box-shadow .25s;min-width:0}.menu-entry:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(57,38,22,.13)}.menu-entry-photo{height:clamp(220px,25vw,330px);position:relative;overflow:hidden;background:#402b1c}.menu-entry-photo:after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(transparent,rgba(22,15,10,.42))}.menu-entry-photo img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .65s}.menu-entry:hover .menu-entry-photo img{transform:scale(1.035)}.menu-entry-photo>span{position:absolute;z-index:1;bottom:13px;left:17px;color:#fff;font:10px var(--mono)}.menu-entry-photo i{font-style:normal;color:#ddd}.menu-entry-copy{padding:18px 21px 20px}.menu-entry-meta{display:flex;justify-content:space-between;align-items:center;gap:10px}.menu-section .menu-tag{font:8px var(--mono);letter-spacing:.15em;text-transform:uppercase;color:#bd4b2d}.menu-section .price{font:italic 600 20px var(--serif);color:#bd4b2d;white-space:nowrap}.menu-entry-copy h4{font:500 clamp(24px,2.7vw,34px)/1 var(--serif);letter-spacing:-.035em;margin:9px 0}.menu-entry-copy p{font:12px/1.7 var(--sans);color:#6f6255;margin:0 0 14px}.menu-entry-copy small{display:inline-block;padding-top:10px;border-top:1px solid rgba(36,27,21,.16);font:8px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:#8c7b69}
+.menu-entry--wide{display:grid;grid-template-columns:1.2fr .8fr;align-items:stretch}.menu-entry--wide .menu-entry-photo{height:100%;min-height:320px}.menu-entry--wide .menu-entry-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(20px,3vw,38px)}.menu-entry--wide .menu-entry-copy h4{font-size:clamp(30px,3vw,42px)}
+.menu-single>aside{display:flex;flex-direction:column;justify-content:center;padding:24px 30px;border-left:1px solid rgba(36,27,21,.22)}.menu-single>aside>small{font:8px var(--mono);letter-spacing:.16em;color:#877664}.menu-single>aside p{font:500 clamp(28px,3.3vw,43px)/1.02 var(--serif);letter-spacing:-.035em;margin:20px 0}.menu-single>aside em{color:#d95532}.menu-single>aside .menu-stamp{color:#bd4b2d}
+@media(max-width:760px){.menu-chapter-nav{grid-template-columns:repeat(2,1fr);margin-bottom:48px}.menu-chapter-nav a:nth-child(3){border-left:1px solid rgba(36,27,21,.18);border-top:1px solid rgba(36,27,21,.18)}.menu-chapter-nav a:nth-child(4){border-top:1px solid rgba(36,27,21,.18)}.menu-chapter{margin-bottom:48px}.menu-single{grid-template-columns:1fr}.menu-entry--wide{grid-template-columns:1fr 1fr}.menu-entry--wide .menu-entry-photo{min-height:260px}.menu-single>aside{min-height:170px;border-left:0;border-top:1px solid rgba(36,27,21,.22);padding:20px 5px}}
+@media(max-width:560px){.menu-pair{grid-template-columns:1fr}.menu-entry-photo{height:clamp(220px,65vw,330px)}.menu-entry--wide{grid-template-columns:1fr}.menu-entry--wide .menu-entry-photo{height:240px;min-height:0}.menu-entry-copy{padding:17px}.menu-entry-copy h4{font-size:28px}.menu-entry--wide .menu-entry-copy h4{font-size:32px}.menu-single>aside{min-height:140px}.menu-single>aside p{margin:12px 0;font-size:32px}}
 
 </style>
 </head>
@@ -409,7 +371,7 @@ body.entry-open{overflow:hidden}
   <a class="brand" href="#home">THE WRITER'S <span class="brand-dot"></span> ROOM</a>
   <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
   <ul class="nav-links">
-    <li><a href="#story">Our story</a></li><li><a href="#experience">The room</a></li><li><a href="#menu">Menu</a></li><li><a href="#gallery">Moments</a></li><li><a class="nav-book" href="#visit">Find your seat ↗</a></li>
+    <li><a href="#story">Our story</a></li><li><a href="#experience">The room</a></li><li><a href="#menu">Menu</a></li><li><a class="nav-book" href="#visit">Find your seat ↗</a></li>
   </ul>
 </nav>
 <main>
@@ -496,47 +458,18 @@ body.entry-open{overflow:hidden}
   </div>
 </section>
 <section class="section menu-section" id="menu">
-  <div class="section-label"><span><span class="number">03 /</span> Something for the table</span><span>Good things, thoughtfully made</span></div>
-  <div class="menu-head reveal"><h2>Read the<br><em>menu.</em></h2><p class="menu-note">A table of contents for the good things. Pick a page to see it closer.</p></div>
-  <div class="menu-browser-bar reveal"><span class="menu-browser-label">Browse the pages</span>
-    <div class="menu-filters" role="group" aria-label="Filter menu items">
-      <button class="filter-btn active" data-filter="all" aria-pressed="true">Everything</button><button class="filter-btn" data-filter="coffee" aria-pressed="false">Coffee</button><button class="filter-btn" data-filter="dessert" aria-pressed="false">Desserts</button><button class="filter-btn" data-filter="pasta" aria-pressed="false">Pasta &amp; rice</button><button class="filter-btn" data-filter="sandwich" aria-pressed="false">Sandwiches</button>
-    </div>
-  </div>
-  <div class="menu-spread reveal">
-    <article class="menu-feature-page" aria-live="polite">
-      <div class="menu-feature-photo"><img id="menu-feature-image" src="irish-coffee.png" alt="Irish cold coffee"><span class="menu-feature-number" id="menu-feature-number">01 <i>/ 06</i></span><span class="menu-feature-caption">A good thing, made here</span></div>
-      <div class="menu-feature-copy"><span class="menu-tag" id="menu-feature-tag">Signature · Coffee</span><h3 id="menu-feature-title">Irish Cold Coffee</h3><p id="menu-feature-description">Velvety cold brew layered with cream and a whisper of Irish flavour.</p><div class="menu-feature-foot"><span class="price" id="menu-feature-price">₹249</span><span class="menu-badge" id="menu-feature-badge">Fan favourite</span></div></div>
-    </article>
-    <div class="menu-index-page">
-      <div class="menu-index-heading"><div><span class="menu-index-kicker">The Writer’s Room · Rushikonda</span><h3>On the table</h3></div><span class="menu-index-count" id="menu-index-count">06 notes</span></div>
-      <div class="menu-index-list" aria-label="Menu items">
-        <button type="button" class="menu-index-row is-selected" data-menu-index="0" data-category="coffee" aria-pressed="true"><img src="irish-coffee.png" alt="" loading="lazy"><span class="menu-row-copy"><span class="menu-row-number">01 / Signature · Coffee</span><span class="menu-row-title">Irish Cold Coffee</span></span><span class="menu-row-price">₹249</span><span class="menu-row-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" class="menu-index-row" data-menu-index="1" data-category="coffee" aria-pressed="false"><img src="hilltop-americano.png" alt="" loading="lazy"><span class="menu-row-copy"><span class="menu-row-number">02 / Classic · Coffee</span><span class="menu-row-title">Hilltop Americano</span></span><span class="menu-row-price">₹179</span><span class="menu-row-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" class="menu-index-row" data-menu-index="2" data-category="dessert" aria-pressed="false"><img src="desserts.png" alt="" loading="lazy"><span class="menu-row-copy"><span class="menu-row-number">03 / Indulgence · Dessert</span><span class="menu-row-title">Seasonal Desserts</span></span><span class="menu-row-price">₹199</span><span class="menu-row-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" class="menu-index-row" data-menu-index="3" data-category="pasta" aria-pressed="false"><img src="pasta.png" alt="" loading="lazy"><span class="menu-row-copy"><span class="menu-row-number">04 / Mains · Pasta</span><span class="menu-row-title">Pasta of the Writer</span></span><span class="menu-row-price">₹299</span><span class="menu-row-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" class="menu-index-row" data-menu-index="4" data-category="pasta" aria-pressed="false"><img src="rice-plate.png" alt="" loading="lazy"><span class="menu-row-copy"><span class="menu-row-number">05 / Mains · Rice</span><span class="menu-row-title">Grilled Chicken Rice Plate</span></span><span class="menu-row-price">₹349</span><span class="menu-row-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" class="menu-index-row" data-menu-index="5" data-category="sandwich" aria-pressed="false"><img src="sandwich.png" alt="" loading="lazy"><span class="menu-row-copy"><span class="menu-row-number">06 / Snacks · Sandwich</span><span class="menu-row-title">Coastal Chicken Sandwich</span></span><span class="menu-row-price">₹279</span><span class="menu-row-arrow" aria-hidden="true">↗</span></button>
-      </div>
-      <div class="menu-index-foot"><span>Choose a line to read its full story</span><span class="menu-index-mark">TWR · 03</span></div>
-    </div>
-  </div>
+<div class="section-label"><span><span class="number">03 /</span> Something for the table</span><span>Good things, thoughtfully made</span></div>
+<div class="menu-head reveal"><h2>A little something<br><em>for the plot.</em></h2><p class="menu-note">A menu in chapters. Pick a heading to turn straight to it, or take your time with the whole page.</p></div>
+<nav class="menu-chapter-nav" id="menu-index" aria-label="Menu chapters"><a href="#menu-coffee"><span>01</span><strong>Coffee</strong><i>↘</i></a><a href="#menu-sweet"><span>02</span><strong>Desserts</strong><i>↘</i></a><a href="#menu-mains"><span>03</span><strong>Pasta &amp; rice</strong><i>↘</i></a><a href="#menu-sandwich"><span>04</span><strong>Sandwiches</strong><i>↘</i></a></nav>
+<div class="menu-chapter " id="menu-coffee"><header><div><small>CHAPTER 01 · 02 ITEMS</small><h3>Coffee &amp; slow starts</h3></div><span>01 — 02</span></header><div class="menu-pair"><article class="menu-entry"><div class="menu-entry-photo"><img src="irish-coffee.png" alt="Irish cold coffee" loading="lazy"><span>01 <i>/ 06</i></span></div><div class="menu-entry-copy"><div class="menu-entry-meta"><span class="menu-tag">Signature · Coffee</span><span class="price">₹249</span></div><h4>Irish Cold Coffee</h4><p>Velvety cold brew layered with cream and a whisper of Irish flavour.</p><small>Fan favourite</small></div></article><article class="menu-entry"><div class="menu-entry-photo"><img src="hilltop-americano.png" alt="Hilltop Americano" loading="lazy"><span>02 <i>/ 06</i></span></div><div class="menu-entry-copy"><div class="menu-entry-meta"><span class="menu-tag">Classic · Coffee</span><span class="price">₹179</span></div><h4>Hilltop Americano</h4><p>A bold double-shot Americano with the house blend. Clean, strong and easy.</p><small>The classic</small></div></article></div></div>
+<div class="menu-chapter " id="menu-sweet"><header><div><small>CHAPTER 02 · 01 ITEM</small><h3>Something sweet</h3></div><span>03</span></header><div class="menu-single"><article class="menu-entry menu-entry--wide"><div class="menu-entry-photo"><img src="desserts.png" alt="Seasonal desserts" loading="lazy"><span>03 <i>/ 06</i></span></div><div class="menu-entry-copy"><div class="menu-entry-meta"><span class="menu-tag">Indulgence · Dessert</span><span class="price">₹199+</span></div><h4>Seasonal Desserts</h4><p>A rotating selection of cakes, Belgian waffles and pastries.</p><small>Chef's pick</small></div></article><aside><small>A NOTE IN THE MARGIN</small><p>Save a little<br>room for<br><em>something sweet.</em></p><small class="menu-stamp">TWR · 02</small></aside></div></div>
+<div class="menu-chapter " id="menu-mains"><header><div><small>CHAPTER 03 · 02 ITEMS</small><h3>A longer lunch</h3></div><span>04 — 05</span></header><div class="menu-pair"><article class="menu-entry"><div class="menu-entry-photo"><img src="pasta.png" alt="Pasta dish" loading="lazy"><span>04 <i>/ 06</i></span></div><div class="menu-entry-copy"><div class="menu-entry-meta"><span class="menu-tag">Mains · Pasta</span><span class="price">₹299</span></div><h4>Pasta of the Writer</h4><p>Arrabbiata or white sauce pasta with fresh herbs and toasted garlic.</p><small>A hearty page</small></div></article><article class="menu-entry"><div class="menu-entry-photo"><img src="rice-plate.png" alt="Grilled chicken rice plate" loading="lazy"><span>05 <i>/ 06</i></span></div><div class="menu-entry-copy"><div class="menu-entry-meta"><span class="menu-tag">Mains · Rice</span><span class="price">₹349</span></div><h4>Grilled Chicken Rice Plate</h4><p>Herb-marinated chicken over seasoned basmati with house-made sauce.</p><small>Must try</small></div></article></div></div>
+<div class="menu-chapter " id="menu-sandwich"><header><div><small>CHAPTER 04 · 01 ITEM</small><h3>Between the lines</h3></div><span>06</span></header><div class="menu-single"><article class="menu-entry menu-entry--wide"><div class="menu-entry-photo"><img src="sandwich.png" alt="Coastal chicken sandwich" loading="lazy"><span>06 <i>/ 06</i></span></div><div class="menu-entry-copy"><div class="menu-entry-meta"><span class="menu-tag">Snacks · Sandwich</span><span class="price">₹279</span></div><h4>Coastal Chicken Sandwich</h4><p>Crispy chicken, coastal spice, house aioli and pickled slaw.</p><small>Made to linger</small></div></article><aside><small>FOR A SMALL PAUSE</small><p>Good things<br>fit neatly<br><em>between bread.</em></p><small class="menu-stamp">TWR · 04</small></aside></div></div>
 </section>
-<section class="section gallery-section" id="gallery">
-  <div class="section-label"><span><span class="number">04 /</span> A few frames from here</span><span>Take a look around</span></div>
-  <div class="gallery-title reveal"><h2>Little <em>moments.</em></h2><p>Scroll slowly. Stay a little longer.</p></div>
-  <div class="gallery-grid">
-    <div class="gallery-item reveal"><img src="gallery1.png" alt="Sea view from the café" loading="lazy"><span class="gallery-caption">The view</span></div>
-    <div class="gallery-item reveal reveal-delay-1"><img src="gallery2.png" alt="Coffee at The Writer's Room" loading="lazy"><span class="gallery-caption">Coffee rituals</span></div>
-    <div class="gallery-item reveal reveal-delay-2"><img src="gallery3.png" alt="Golden hour at the café" loading="lazy"><span class="gallery-caption">Golden hour</span></div>
-    <div class="gallery-item reveal"><img src="gallery4.png" alt="The writers corner" loading="lazy"><span class="gallery-caption">A quiet corner</span></div>
-    <div class="gallery-item reveal reveal-delay-1"><img src="gallery5.png" alt="Evening ambience" loading="lazy"><span class="gallery-caption">After hours</span></div>
-    <div class="gallery-item reveal reveal-delay-2"><img src="gallery6.png" alt="Social evenings" loading="lazy"><span class="gallery-caption">Good company</span></div>
-  </div>
-</section>
+
 <section class="big-quote"><div class="quote-label">05 / The feeling</div><blockquote class="reveal">“A little less rush.<br>A little more <em>Rushikonda.</em>”</blockquote></section>
 <section class="section" id="visit">
-  <div class="section-label"><span><span class="number">06 /</span> Come find us</span><span>Your next good afternoon starts here</span></div>
+  <div class="section-label"><span><span class="number">04 /</span> Come find us</span><span>Your next good afternoon starts here</span></div>
   <div class="visit">
     <div class="visit-copy reveal"><span class="kicker">Your table, your story</span><h2>Meet us<br><em>up here.</em></h2><p>Planning a visit? Send us a reservation request on WhatsApp and our team can help you with availability.</p><div class="visit-details"><div class="detail"><span>Find us</span><span>Ramanaidu Studios Rd, Rushikonda, Madhuravada, Andhra Pradesh 531163</span></div><div class="detail"><span>Call</span><span>+91 81796 86644</span></div><div class="detail"><span>Hours</span><span>Mon–Fri · 11 AM–9 PM<br>Sat–Sun · 11 AM–10 PM</span></div><div class="detail"><span>Come for</span><span>Sea views · Coffee · Sunsets · Conversations</span></div></div><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=The+Writers+Room+Rushikonda+Visakhapatnam" target="_blank" rel="noopener">Get directions <span>↗</span></a></div>
     <form class="visit-form reveal reveal-delay-1" id="reservation-form">
@@ -555,7 +488,7 @@ body.entry-open{overflow:hidden}
   </div>
 </section>
 </main>
-<footer class="footer"><div class="footer-top"><a class="footer-brand" href="#home">The Writer's <em>Room.</em></a><a class="footer-cta" href="#visit">Come see for yourself ↗</a></div><div class="footer-bottom"><span>© <span id="year"></span> The Writer's Room · Rushikonda, Vizag</span><div class="footer-links"><a href="#story">Story</a><a href="#menu">Menu</a><a href="#gallery">Moments</a><a href="#visit">Visit</a></div><span>Made for slow afternoons.</span></div></footer>
+<footer class="footer"><div class="footer-top"><a class="footer-brand" href="#home">The Writer's <em>Room.</em></a><a class="footer-cta" href="#visit">Come see for yourself ↗</a></div><div class="footer-bottom"><span>© <span id="year"></span> The Writer's Room · Rushikonda, Vizag</span><div class="footer-links"><a href="#story">Story</a><a href="#menu">Menu</a><a href="#visit">Visit</a></div><span>Made for slow afternoons.</span></div></footer>
 <script>
 (function(){
 
@@ -704,32 +637,6 @@ body.entry-open{overflow:hidden}
   window.addEventListener('scroll',updateNav,{passive:true});updateNav();
   toggle.addEventListener('click',function(){const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰'});
   links.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰'})});
-
-  const menuData=[
-    {category:'coffee',image:'irish-coffee.png',alt:'Irish cold coffee',tag:'Signature · Coffee',title:'Irish Cold Coffee',description:'Velvety cold brew layered with cream and a whisper of Irish flavour.',price:'₹249',badge:'Fan favourite'},
-    {category:'coffee',image:'hilltop-americano.png',alt:'Hilltop Americano',tag:'Classic · Coffee',title:'Hilltop Americano',description:'A bold double-shot Americano with the house blend. Clean, strong and easy.',price:'₹179',badge:'The classic'},
-    {category:'dessert',image:'desserts.png',alt:'Seasonal desserts',tag:'Indulgence · Dessert',title:'Seasonal Desserts',description:'A rotating selection of cakes, Belgian waffles and pastries.',price:'₹199',badge:'Chef\'s pick'},
-    {category:'pasta',image:'pasta.png',alt:'Pasta dish',tag:'Mains · Pasta',title:'Pasta of the Writer',description:'Arrabbiata or white sauce pasta with fresh herbs and toasted garlic.',price:'₹299',badge:'A hearty page'},
-    {category:'pasta',image:'rice-plate.png',alt:'Grilled chicken rice plate',tag:'Mains · Rice',title:'Grilled Chicken Rice Plate',description:'Herb-marinated chicken over seasoned basmati with house-made sauce.',price:'₹349',badge:'Must try'},
-    {category:'sandwich',image:'sandwich.png',alt:'Coastal chicken sandwich',tag:'Snacks · Sandwich',title:'Coastal Chicken Sandwich',description:'Crispy chicken, coastal spice, house aioli and pickled slaw.',price:'₹279',badge:'Made to linger'}
-  ];
-  (function(){
-    const section=document.getElementById('menu');if(!section)return;
-    const rows=Array.from(section.querySelectorAll('.menu-index-row'));
-    const filters=Array.from(section.querySelectorAll('.filter-btn'));
-    const featureImage=document.getElementById('menu-feature-image');
-    const featureNumber=document.getElementById('menu-feature-number');
-    const featureTag=document.getElementById('menu-feature-tag');
-    const featureTitle=document.getElementById('menu-feature-title');
-    const featureDescription=document.getElementById('menu-feature-description');
-    const featurePrice=document.getElementById('menu-feature-price');
-    const featureBadge=document.getElementById('menu-feature-badge');
-    const countLabel=document.getElementById('menu-index-count');
-    let selected=0;
-    function choose(index){const item=menuData[index];if(!item)return;selected=index;featureImage.style.opacity='.25';window.setTimeout(function(){featureImage.src=item.image;featureImage.alt=item.alt;featureImage.style.opacity='1'},100);featureNumber.innerHTML=String(index+1).padStart(2,'0')+' <i>/ 06</i>';featureTag.textContent=item.tag;featureTitle.textContent=item.title;featureDescription.textContent=item.description;featurePrice.textContent=item.price;featureBadge.textContent=item.badge;rows.forEach(function(row,i){const active=i===index;row.classList.toggle('is-selected',active);row.setAttribute('aria-pressed',String(active))})}
-    rows.forEach(function(row){row.addEventListener('click',function(){choose(Number(row.dataset.menuIndex))})});
-    filters.forEach(function(button){button.addEventListener('click',function(){filters.forEach(function(filter){filter.classList.remove('active');filter.setAttribute('aria-pressed','false')});button.classList.add('active');button.setAttribute('aria-pressed','true');const category=button.dataset.filter;let shown=0,first=-1;rows.forEach(function(row){const show=category==='all'||row.dataset.category===category;row.hidden=!show;if(show){shown++;if(first<0)first=Number(row.dataset.menuIndex)}});countLabel.textContent=String(shown).padStart(2,'0')+' '+(shown===1?'note':'notes');if(first>=0&&(menuData[selected].category!==category&&category!=='all'||rows[selected].hidden))choose(first)})});
-  })();
 
   const revealObserver=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}})},{threshold:.12});
   document.querySelectorAll('.reveal:not(.hero .reveal)').forEach(function(el){revealObserver.observe(el)});
