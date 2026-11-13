@@ -260,9 +260,9 @@ body.entry-open{overflow:hidden}
 .experience-sticky{height:100svh;min-height:660px;position:sticky;top:0;overflow:hidden;isolation:isolate;background:#15100c}
 .experience-backdrop,.experience-shade{position:absolute;inset:0}
 .experience-backdrop{z-index:-2}
-.experience-backdrop img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.58) saturate(.76);transform:scale(1.06);opacity:0;transition:none}
+.experience-backdrop img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.88) saturate(1.04);transform:scale(1.04);opacity:0;transition:none}
 .experience-backdrop img.is-active{opacity:1}
-.experience-shade{z-index:-1;background:linear-gradient(90deg,rgba(18,13,10,.84) 0%,rgba(18,13,10,.55) 43%,rgba(18,13,10,.2) 100%),linear-gradient(0deg,rgba(12,9,7,.77) 0%,transparent 58%,rgba(12,9,7,.28) 100%)}
+.experience-shade{z-index:-1;background:linear-gradient(90deg,rgba(18,13,10,.7) 0%,rgba(18,13,10,.32) 43%,rgba(18,13,10,.06) 100%),linear-gradient(0deg,rgba(12,9,7,.56) 0%,transparent 62%,rgba(12,9,7,.16) 100%)}
 .experience-top{position:absolute;z-index:4;top:90px;left:var(--gutter);right:var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:28px}
 .experience-top .section-label{margin:0;color:rgba(242,234,220,.72);font:9px var(--mono);letter-spacing:.16em;text-transform:uppercase}
 .experience-top .number{color:var(--orange2)}
@@ -274,9 +274,6 @@ body.entry-open{overflow:hidden}
 .experience-heading h2{max-width:780px;font:500 clamp(65px,8.5vw,126px)/.82 var(--serif);letter-spacing:-.09em}
 .experience-heading h2 em{color:var(--orange);font-weight:500}
 .experience-heading p{max-width:245px;margin:0 0 5px;color:rgba(242,234,220,.78);font-size:13px;line-height:1.8}
-.experience-cup-orbit{position:absolute;z-index:1;left:var(--cup-x,73%);top:var(--cup-y,57%);width:clamp(320px,39vw,560px);aspect-ratio:1;margin:0;padding:9px;border:1px solid rgba(255,135,86,.68);border-radius:50%;background:rgba(18,13,10,.4);box-shadow:0 0 90px rgba(240,100,53,.16);transform:translate(-50%,-50%) rotate(var(--cup-rotate,0deg)) scale(var(--cup-scale,1));will-change:transform}
-.experience-cup-ring{position:absolute;inset:-13px;border:1px solid rgba(255,135,86,.3);border-radius:50%;pointer-events:none}
-.experience-cup-orbit img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:50%;filter:saturate(.9)}
 .experience-scene-copy{position:absolute;z-index:3;left:var(--gutter);bottom:14%;width:min(520px,43vw);color:var(--paper)}
 .experience-scene-copy.is-entering{animation:experienceSceneIn .55s cubic-bezier(.2,.7,.2,1) both}
 @keyframes experienceSceneIn{from{opacity:.25;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
@@ -293,8 +290,7 @@ body.entry-open{overflow:hidden}
   .experience-heading{top:24%}
   .experience-heading h2{font-size:clamp(62px,10vw,96px)}
   .experience-heading p{max-width:210px}
-  .experience-cup-orbit{width:clamp(300px,43vw,410px);left:70%}
-  .experience-scene-copy{width:min(430px,48vw);bottom:13%}
+    .experience-scene-copy{width:min(430px,48vw);bottom:13%}
 }
 @media(max-width:700px){
   .experience-journey{height:560svh}
@@ -308,9 +304,7 @@ body.entry-open{overflow:hidden}
   .experience-overline{font-size:7px;margin-bottom:13px}
   .experience-heading h2{font-size:clamp(49px,13vw,68px);line-height:.86}
   .experience-heading p{max-width:290px;margin-top:13px;font-size:11px;line-height:1.55}
-  .experience-cup-orbit{width:clamp(180px,49vw,250px);left:70%;top:53%;padding:6px}
-  .experience-cup-ring{inset:-9px}
-  .experience-scene-copy{left:var(--gutter);right:var(--gutter);bottom:13%;width:auto;max-width:440px}
+      .experience-scene-copy{left:var(--gutter);right:var(--gutter);bottom:13%;width:auto;max-width:440px}
   .experience-scene-meta{font-size:7px;margin-bottom:10px}
   .experience-scene-copy h3{font-size:clamp(30px,8vw,42px);margin-bottom:8px}
   .experience-scene-copy p{max-width:290px;font-size:11px;line-height:1.5}
@@ -321,7 +315,7 @@ body.entry-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){
   .experience-journey{height:auto;min-height:100svh}
   .experience-sticky{position:relative;min-height:100svh}
-  .experience-cup-orbit,.experience-scene-copy{will-change:auto}
+  .experience-scene-copy{will-change:auto}
   .experience-scene-copy.is-entering{animation:none}
 }
 </style>
@@ -432,11 +426,6 @@ body.entry-open{overflow:hidden}
         </div>
         <p>Come for one thing. Discover a few more. The best plans here are the ones you didn't make.</p>
       </div>
-
-      <figure class="experience-cup-orbit">
-        <span class="experience-cup-ring" aria-hidden="true"></span>
-        <img src="our-story-cup.svg" alt="A real ceramic cup of latte on a wooden café table">
-      </figure>
 
       <div class="experience-scene-copy" data-exp-copy-panel>
         <span class="experience-scene-meta" data-exp-meta>01 — THE HORIZON</span>
@@ -693,30 +682,28 @@ body.entry-open{overflow:hidden}
     document.querySelectorAll('a,button,.menu-card,.experience-card').forEach(function(el){el.addEventListener('mouseenter',function(){ring.classList.add('active')});el.addEventListener('mouseleave',function(){ring.classList.remove('active')})});
     document.querySelectorAll('.magnetic').forEach(function(el){el.addEventListener('mousemove',function(e){const r=el.getBoundingClientRect();const x=e.clientX-r.left-r.width/2;const y=e.clientY-r.top-r.height/2;el.style.transform='translate('+x*.12+'px,'+y*.18+'px)'});el.addEventListener('mouseleave',function(){el.style.transform=''})});
   }
-  // Scroll through the existing cafe moods with the real latte cup as the focal point.
+  // Scroll through six café moods with the photographs in full view.
   (function(){
     const journey=document.querySelector('[data-experience-journey]');
     if(!journey)return;
     const sticky=journey.querySelector('[data-experience-sticky]');
     const backgrounds=Array.from(journey.querySelectorAll('[data-exp-bg]'));
     const countLabels=Array.from(journey.querySelectorAll('[data-exp-count]'));
-    const progress=journey.querySelector('.experience-progress i b');
     const panel=journey.querySelector('[data-exp-copy-panel]');
     const meta=journey.querySelector('[data-exp-meta]');
     const title=journey.querySelector('[data-exp-title]');
     const description=journey.querySelector('[data-exp-description]');
     const scenes=[
-      {meta:'01 — THE HORIZON',title:'Sea-view terraces',description:'Open-air seats with the Bay of Bengal stretching out in front of you.',image:'sea-view.png',x:73,y:57,mx:68,my:52,rotate:-7,scale:.96},
-      {meta:'02 — GOLDEN HOUR',title:'Sunset hours',description:'Watch the Rushikonda sky turn every shade of gold.',image:'sunset-evening.png',x:69,y:52,mx:72,my:49,rotate:5,scale:1.04},
-      {meta:'03 — DEEP WORK',title:'Creative corners',description:'A change of scene for your next big idea.',image:'workspace.png',x:66,y:58,mx:66,my:54,rotate:-4,scale:.98},
-      {meta:'04 — THE RITUAL',title:'Coffee culture',description:'From a familiar classic to a signature cold coffee.',image:'coffee.png',x:74,y:49,mx:72,my:49,rotate:6,scale:1.08},
-      {meta:'05 — SLOW EVENINGS',title:'Intimate moments',description:'Warm lights, cosy corners and time that feels unhurried.',image:'romantic.png',x:68,y:57,mx:66,my:53,rotate:-5,scale:1.02},
-      {meta:'06 — TOGETHER',title:'Gather around',description:'Make room for birthdays, meetups and spontaneous plans.',image:'social.png',x:74,y:51,mx:71,my:50,rotate:4,scale:.96}
+      {meta:'01 — THE HORIZON',title:'Sea-view terraces',description:'Open-air seats with the Bay of Bengal stretching out in front of you.',image:'sea-view.png'},
+      {meta:'02 — GOLDEN HOUR',title:'Sunset hours',description:'Watch the Rushikonda sky turn every shade of gold.',image:'sunset-evening.png'},
+      {meta:'03 — DEEP WORK',title:'Creative corners',description:'A change of scene for your next big idea.',image:'workspace.png'},
+      {meta:'04 — THE RITUAL',title:'Coffee culture',description:'From a familiar classic to a signature cold coffee.',image:'coffee.png'},
+      {meta:'05 — SLOW EVENINGS',title:'Intimate moments',description:'Warm lights, cosy corners and time that feels unhurried.',image:'romantic.png'},
+      {meta:'06 — TOGETHER',title:'Gather around',description:'Make room for birthdays, meetups and spontaneous plans.',image:'social.png'}
     ];
     const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let front=backgrounds[0],back=backgrounds[1],pairIndex=0,activeScene=-1,frame=0;
     function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
-    function mix(a,b,t){return a+(b-a)*t}
     function setScene(index){
       const scene=scenes[index];
       if(index===activeScene)return;
@@ -742,13 +729,6 @@ body.entry-open{overflow:hidden}
       syncBackgroundPair(index);
       setScene(index);
       front.style.opacity=String(1-blend);back.style.opacity=String(blend);
-      const next=scenes[Math.min(index+1,scenes.length-1)];
-      const current=scenes[index];
-      const mobile=window.matchMedia('(max-width: 700px)').matches;
-      sticky.style.setProperty('--cup-x',mix(mobile?current.mx:current.x,mobile?next.mx:next.x,blend)+'%');
-      sticky.style.setProperty('--cup-y',mix(mobile?current.my:current.y,mobile?next.my:next.y,blend)+'%');
-      sticky.style.setProperty('--cup-rotate',mix(current.rotate,next.rotate,blend)+'deg');
-      sticky.style.setProperty('--cup-scale',mix(current.scale,next.scale,blend));
       sticky.style.setProperty('--experience-progress',String(progressValue));
     }
     function schedule(){if(!frame)frame=requestAnimationFrame(render)}
