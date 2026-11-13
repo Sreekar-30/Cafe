@@ -318,6 +318,36 @@ body.entry-open{overflow:hidden}
   .experience-scene-copy{will-change:auto}
   .experience-scene-copy.is-entering{animation:none}
 }
+
+/* Infinite menu: canvas based so it works in this single-file site. */
+.menu-section{position:relative;overflow:hidden;background:radial-gradient(ellipse at 76% 57%,rgba(129,69,36,.16),transparent 43%),#211b15}
+.menu-head{margin-bottom:30px}
+.infinite-menu-layout{display:grid;grid-template-columns:minmax(250px,.78fr) minmax(420px,1.22fr);gap:clamp(24px,5vw,78px);align-items:center;min-height:520px}
+.infinite-menu-feature{position:relative;max-width:430px;width:100%;background:linear-gradient(145deg,rgba(61,46,34,.94),rgba(35,27,20,.97));border:1px solid rgba(232,127,75,.24);box-shadow:0 28px 80px rgba(0,0,0,.22)}
+.infinite-menu-photo{height:clamp(210px,24vw,300px);position:relative;overflow:hidden;background:#302319}
+.infinite-menu-photo:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(15,11,8,.65));pointer-events:none}
+.infinite-menu-photo img{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(1.05);transition:opacity .24s,transform .7s}
+.infinite-menu-feature:hover .infinite-menu-photo img{transform:scale(1.035)}
+.infinite-menu-index{position:absolute;z-index:1;left:20px;bottom:16px;color:#f2eadc;font:10px var(--mono);letter-spacing:.16em}
+.infinite-menu-detail{padding:24px 26px 20px}
+.infinite-menu-detail h3{font:500 clamp(28px,3vw,42px)/1.02 var(--serif);letter-spacing:-.045em;margin:12px 0 10px;color:var(--paper)}
+.infinite-menu-detail p{font:13px/1.75 var(--sans);color:#c5b9aa;min-height:46px;margin:0}
+.infinite-menu-detail .menu-card-foot{margin-top:20px;padding-top:16px}
+.infinite-menu-stage{height:clamp(400px,48vw,610px);min-width:0;position:relative;isolation:isolate;touch-action:none;cursor:grab}
+.infinite-menu-stage:active{cursor:grabbing}
+.infinite-menu-glow{position:absolute;z-index:-1;width:74%;aspect-ratio:1;left:13%;top:10%;border-radius:50%;background:radial-gradient(circle,rgba(174,94,48,.2),rgba(112,59,31,.09) 45%,transparent 72%);filter:blur(20px);pointer-events:none}
+.infinite-menu-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none}
+.infinite-menu-canvas:focus-visible{outline:1px solid var(--orange);outline-offset:-8px}
+.infinite-menu-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;align-items:center;gap:9px;white-space:nowrap;color:#b9ad9c;font:9px var(--mono);letter-spacing:.19em;text-transform:uppercase;pointer-events:none}
+.menu-live-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px rgba(240,100,53,.8)}
+.infinite-menu-controls{position:absolute;right:10px;bottom:13px;display:flex;gap:8px}
+.infinite-menu-control{width:38px;height:38px;border:1px solid rgba(242,234,220,.3);border-radius:50%;background:rgba(25,19,14,.76);color:var(--paper);font:18px var(--sans);cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.infinite-menu-control:hover,.infinite-menu-control:focus-visible{background:var(--orange);border-color:var(--orange);transform:translateY(-2px);outline:none}
+@media(max-width:900px){.infinite-menu-layout{grid-template-columns:minmax(220px,.8fr) minmax(340px,1.2fr);gap:20px}.infinite-menu-stage{height:470px}.infinite-menu-photo{height:220px}}
+@media(max-width:680px){.menu-head{align-items:flex-start;flex-direction:column;gap:16px}.menu-note{max-width:250px}.infinite-menu-layout{grid-template-columns:1fr;gap:8px;min-height:0}.infinite-menu-feature{max-width:none;display:grid;grid-template-columns:minmax(120px,.78fr) minmax(0,1.22fr);align-items:stretch}.infinite-menu-photo{height:100%;min-height:210px}.infinite-menu-detail{padding:19px 18px 16px}.infinite-menu-detail h3{font-size:clamp(25px,7vw,34px)}.infinite-menu-detail p{font-size:12px;min-height:0}.infinite-menu-detail .menu-card-foot{gap:10px;align-items:flex-end}.infinite-menu-stage{height:min(110vw,460px);min-height:330px;margin-top:4px}.infinite-menu-controls{right:4px;bottom:8px}.infinite-menu-hint{bottom:17px;left:42%}}
+@media(max-width:420px){.infinite-menu-feature{grid-template-columns:1fr}.infinite-menu-photo{height:190px;min-height:190px}.infinite-menu-detail{padding:18px}.infinite-menu-stage{min-height:300px}}
+@media(prefers-reduced-motion:reduce){.infinite-menu-photo img,.infinite-menu-control{transition:none}}
+
 </style>
 </head>
 <body class="entry-open">
@@ -447,17 +477,21 @@ body.entry-open{overflow:hidden}
 </section>
 <section class="section menu-section" id="menu">
   <div class="section-label"><span><span class="number">03 /</span> Something for the table</span><span>Good things, thoughtfully made</span></div>
-  <div class="menu-head reveal"><h2>Read the<br><em>menu.</em></h2><p class="menu-note">A few favourites from the menu. Prices in INR.</p></div>
+  <div class="menu-head reveal"><h2>Read the<br><em>menu.</em></h2><p class="menu-note">Spin through a few favourites. Prices in INR.</p></div>
   <div class="menu-filters reveal" role="group" aria-label="Filter menu items">
-    <button class="filter-btn active" data-filter="all" aria-pressed="true">Everything</button><button class="filter-btn" data-filter="coffee" aria-pressed="false">Coffee</button><button class="filter-btn" data-filter="dessert" aria-pressed="false">Desserts</button><button class="filter-btn" data-filter="pasta" aria-pressed="false">Pasta & rice</button><button class="filter-btn" data-filter="sandwich" aria-pressed="false">Sandwiches</button>
+    <button class="filter-btn active" data-filter="all" aria-pressed="true">Everything</button><button class="filter-btn" data-filter="coffee" aria-pressed="false">Coffee</button><button class="filter-btn" data-filter="dessert" aria-pressed="false">Desserts</button><button class="filter-btn" data-filter="pasta" aria-pressed="false">Pasta &amp; rice</button><button class="filter-btn" data-filter="sandwich" aria-pressed="false">Sandwiches</button>
   </div>
-  <div class="menu-grid">
-    <article class="menu-card reveal" data-category="coffee"><div class="menu-photo"><img src="irish-coffee.png" alt="Irish cold coffee" loading="lazy"></div><div class="menu-card-body"><span class="menu-tag">Signature · Coffee</span><h3>Irish Cold Coffee</h3><p>Velvety cold brew layered with cream and a whisper of Irish flavour.</p><div class="menu-card-foot"><span class="price">₹249</span><span class="menu-badge">Fan favourite</span></div></div></article>
-    <article class="menu-card reveal reveal-delay-1" data-category="coffee"><div class="menu-photo"><img src="hilltop-americano.png" alt="Hilltop Americano" loading="lazy"></div><div class="menu-card-body"><span class="menu-tag">Classic · Coffee</span><h3>Hilltop Americano</h3><p>A bold double-shot Americano with the house blend. Clean, strong and easy.</p><div class="menu-card-foot"><span class="price">₹179</span><span class="menu-badge">The classic</span></div></div></article>
-    <article class="menu-card reveal reveal-delay-2" data-category="dessert"><div class="menu-photo"><img src="desserts.png" alt="Seasonal desserts" loading="lazy"></div><div class="menu-card-body"><span class="menu-tag">Indulgence · Dessert</span><h3>Seasonal Desserts</h3><p>A rotating selection of cakes, Belgian waffles and pastries.</p><div class="menu-card-foot"><span class="price">₹199+</span><span class="menu-badge">Chef's pick</span></div></div></article>
-    <article class="menu-card reveal" data-category="pasta"><div class="menu-photo"><img src="pasta.png" alt="Pasta dish" loading="lazy"></div><div class="menu-card-body"><span class="menu-tag">Mains · Pasta</span><h3>Pasta of the Writer</h3><p>Arrabbiata or white sauce pasta with fresh herbs and toasted garlic.</p><div class="menu-card-foot"><span class="price">₹299</span><span class="menu-badge">A hearty page</span></div></div></article>
-    <article class="menu-card reveal reveal-delay-1" data-category="pasta"><div class="menu-photo"><img src="rice-plate.png" alt="Grilled chicken rice plate" loading="lazy"></div><div class="menu-card-body"><span class="menu-tag">Mains · Rice</span><h3>Grilled Chicken Rice Plate</h3><p>Herb-marinated chicken over seasoned basmati with house-made sauce.</p><div class="menu-card-foot"><span class="price">₹349</span><span class="menu-badge">Must try</span></div></div></article>
-    <article class="menu-card reveal reveal-delay-2" data-category="sandwich"><div class="menu-photo"><img src="sandwich.png" alt="Coastal chicken sandwich" loading="lazy"></div><div class="menu-card-body"><span class="menu-tag">Snacks · Sandwich</span><h3>Coastal Chicken Sandwich</h3><p>Crispy chicken, coastal spice, house aioli and pickled slaw.</p><div class="menu-card-foot"><span class="price">₹279</span><span class="menu-badge">Made to linger</span></div></div></article>
+  <div class="infinite-menu-layout reveal">
+    <article class="infinite-menu-feature" aria-live="polite">
+      <div class="infinite-menu-photo"><img id="infinite-menu-image" src="irish-coffee.png" alt="Irish cold coffee"><span class="infinite-menu-index" id="infinite-menu-index">01 / 06</span></div>
+      <div class="infinite-menu-detail"><span class="menu-tag" id="infinite-menu-tag">Signature · Coffee</span><h3 id="infinite-menu-title">Irish Cold Coffee</h3><p id="infinite-menu-description">Velvety cold brew layered with cream and a whisper of Irish flavour.</p><div class="menu-card-foot"><span class="price" id="infinite-menu-price">₹249</span><span class="menu-badge" id="infinite-menu-badge">Made to linger</span></div></div>
+    </article>
+    <div class="infinite-menu-stage">
+      <div class="infinite-menu-glow" aria-hidden="true"></div>
+      <canvas class="infinite-menu-canvas" id="infinite-menu-canvas" tabindex="0" role="img" aria-label="Rotating menu photos. Drag to explore, or use the arrow keys."></canvas>
+      <div class="infinite-menu-hint"><span class="menu-live-dot"></span>Drag to explore</div>
+      <div class="infinite-menu-controls" aria-label="Menu item controls"><button type="button" class="infinite-menu-control" data-menu-step="-1" aria-label="Previous menu item">←</button><button type="button" class="infinite-menu-control" data-menu-step="1" aria-label="Next menu item">→</button></div>
+    </div>
   </div>
 </section>
 <section class="section gallery-section" id="gallery">
@@ -643,14 +677,60 @@ body.entry-open{overflow:hidden}
   toggle.addEventListener('click',function(){const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰'});
   links.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰'})});
 
-  const filters=document.querySelectorAll('.filter-btn');
-  const cards=document.querySelectorAll('.menu-card');
-  filters.forEach(function(btn){btn.addEventListener('click',function(){
-    filters.forEach(function(b){b.classList.remove('active');b.setAttribute('aria-pressed','false')});
-    btn.classList.add('active');btn.setAttribute('aria-pressed','true');
-    const filter=btn.dataset.filter;
-    cards.forEach(function(card){card.hidden=filter!=='all'&&card.dataset.category!==filter});
-  })});
+  const menuItems=[
+    {category:'coffee',image:'irish-coffee.png',alt:'Irish cold coffee',tag:'Signature · Coffee',title:'Irish Cold Coffee',description:'Velvety cold brew layered with cream and a whisper of Irish flavour.',price:'₹249',badge:'Made to linger'},
+    {category:'coffee',image:'hilltop-americano.png',alt:'Hilltop Americano',tag:'Classic · Coffee',title:'Hilltop Americano',description:'A bold double-shot Americano with the house blend. Clean, strong and easy.',price:'₹179',badge:'A daily classic'},
+    {category:'dessert',image:'desserts.png',alt:'Seasonal desserts',tag:'Indulgence · Dessert',title:'Seasonal Desserts',description:'A rotating selection of cakes, Belgian waffles and pastries.',price:'₹199',badge:'Something sweet'},
+    {category:'pasta',image:'pasta.png',alt:'Pasta dish',tag:'Mains · Pasta',title:'Pasta of the Writer',description:'Arrabbiata or white sauce pasta with fresh herbs and toasted garlic.',price:'₹299',badge:'Made to order'},
+    {category:'pasta',image:'rice-plate.png',alt:'Grilled chicken rice plate',tag:'Mains · Rice',title:'Grilled Chicken Rice Plate',description:'Herb-marinated chicken over seasoned basmati with house-made sauce.',price:'₹349',badge:'House favourite'},
+    {category:'sandwich',image:'sandwich.png',alt:'Coastal chicken sandwich',tag:'Snacks · Sandwich',title:'Coastal Chicken Sandwich',description:'Crispy chicken, coastal spice, house aioli and pickled slaw.',price:'₹279',badge:'Made to linger'}
+  ];
+  (function(){
+    const canvas=document.getElementById('infinite-menu-canvas'),section=document.getElementById('menu');
+    if(!canvas||!section)return;
+    const ctx=canvas.getContext('2d');if(!ctx)return;
+    const stage=canvas.parentElement,filters=section.querySelectorAll('.filter-btn');
+    const photo=document.getElementById('infinite-menu-image'),indexLabel=document.getElementById('infinite-menu-index'),tagLabel=document.getElementById('infinite-menu-tag'),titleLabel=document.getElementById('infinite-menu-title'),descriptionLabel=document.getElementById('infinite-menu-description'),priceLabel=document.getElementById('infinite-menu-price'),badgeLabel=document.getElementById('infinite-menu-badge');
+    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const images=menuItems.map(function(item){const image=new Image();image.src=item.image;return image});
+    let items=menuItems.slice(),active=0,rotationY=.22,rotationX=-.18,velocityX=0,velocityY=0,width=0,height=0,dpr=1,visible=false,dragging=false,hovering=false,downX=0,downY=0,lastX=0,lastY=0,moved=false,lastTime=0,nextAdvance=0,frame=0,projected=[];
+    const points=[{x:0,y:0,z:1}],count=160,golden=Math.PI*(3-Math.sqrt(5));
+    for(let i=1;i<count;i++){const y=1-2*(i-.5)/(count-1),r=Math.sqrt(1-y*y),theta=golden*i;points.push({x:Math.cos(theta)*r,y:y,z:Math.sin(theta)*r})}
+    function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
+    function roundedRect(x,y,w,h,r){const q=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+q,y);ctx.lineTo(x+w-q,y);ctx.quadraticCurveTo(x+w,y,x+w,y+q);ctx.lineTo(x+w,y+h-q);ctx.quadraticCurveTo(x+w,y+h,x+w-q,y+h);ctx.lineTo(x+q,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-q);ctx.lineTo(x,y+q);ctx.quadraticCurveTo(x,y,x+q,y);ctx.closePath()}
+    function setActive(value){if(!items.length)return;active=(value+items.length)%items.length;const item=items[active];photo.src=item.image;photo.alt=item.alt;indexLabel.textContent=String(active+1).padStart(2,'0')+' / '+String(items.length).padStart(2,'0');tagLabel.textContent=item.tag;titleLabel.textContent=item.title;descriptionLabel.textContent=item.description;priceLabel.textContent=item.price;badgeLabel.textContent=item.badge;canvas.setAttribute('aria-label','Rotating menu photos. Currently showing '+item.title+'. Drag to explore, or use the arrow keys.');nextAdvance=performance.now()+3000}
+    function draw(){
+      if(!width||!height)return;ctx.clearRect(0,0,width,height);
+      const cx=width*.5,cy=height*.49,radius=Math.min(width*.43,height*.41);
+      const glow=ctx.createRadialGradient(cx,cy-radius*.12,4,cx,cy,radius*1.42);glow.addColorStop(0,'rgba(145,77,39,.22)');glow.addColorStop(.68,'rgba(87,49,29,.11)');glow.addColorStop(1,'rgba(31,23,17,0)');ctx.fillStyle=glow;ctx.fillRect(0,0,width,height);
+      const ca=Math.cos(rotationX),sa=Math.sin(rotationX),cb=Math.cos(rotationY),sb=Math.sin(rotationY),camera=[];
+      points.forEach(function(p,i){const y=p.y*ca-p.z*sa,z0=p.y*sa+p.z*ca,x=p.x*cb+z0*sb,z=-p.x*sb+z0*cb,perspective=1/(1.12-z*.23);camera.push({x:cx+x*radius*perspective,y:cy+y*radius*perspective,z:z,perspective:perspective,index:i})});
+      camera.sort(function(a,b){return a.z-b.z});
+      ctx.save();ctx.beginPath();ctx.arc(cx,cy,radius*1.02,0,Math.PI*2);ctx.clip();
+      const sphere=ctx.createRadialGradient(cx-radius*.32,cy-radius*.38,2,cx,cy,radius*1.18);sphere.addColorStop(0,'rgba(107,66,42,.34)');sphere.addColorStop(.7,'rgba(39,29,22,.82)');sphere.addColorStop(1,'rgba(19,15,12,.98)');ctx.fillStyle=sphere;ctx.fillRect(cx-radius,cy-radius,radius*2,radius*2);projected=[];
+      camera.forEach(function(p){const item=items[p.index%items.length],image=images[menuItems.indexOf(item)],depth=(p.z+1)*.5,tileW=(width<500?32:42)*(.47+depth*.65)*p.perspective,tileH=tileW*.72,alpha=.12+.88*clamp((p.z+.28)/1.25,0,1);projected.push({x:p.x,y:p.y,w:tileW,h:tileH,item:item});
+        ctx.save();ctx.globalAlpha=alpha;roundedRect(p.x-tileW/2,p.y-tileH/2,tileW,tileH,Math.min(5,tileH*.12));ctx.clip();
+        if(image&&image.complete&&image.naturalWidth){ctx.filter=p.z<.05?'grayscale(.68) brightness(.58) saturate(.65)':'saturate(1.05) brightness(1.04)';ctx.drawImage(image,p.x-tileW/2,p.y-tileH/2,tileW,tileH)}else{ctx.fillStyle='#58351f';ctx.fillRect(p.x-tileW/2,p.y-tileH/2,tileW,tileH)}
+        ctx.filter='none';ctx.restore();
+        if(p.z>.5){ctx.strokeStyle='rgba(247,157,99,'+((p.z-.5)*.22)+')';ctx.lineWidth=.7;roundedRect(p.x-tileW/2,p.y-tileH/2,tileW,tileH,Math.min(5,tileH*.12));ctx.stroke()}
+      });
+      ctx.restore();ctx.beginPath();ctx.arc(cx,cy,radius*1.02,0,Math.PI*2);ctx.strokeStyle='rgba(237,125,70,.52)';ctx.lineWidth=1;ctx.stroke();ctx.beginPath();ctx.arc(cx,cy,radius*1.075,0,Math.PI*2);ctx.strokeStyle='rgba(237,125,70,.14)';ctx.lineWidth=1;ctx.stroke();
+      const shine=ctx.createRadialGradient(cx-radius*.35,cy-radius*.55,1,cx-radius*.15,cy-radius*.2,radius*.8);shine.addColorStop(0,'rgba(255,211,161,.08)');shine.addColorStop(1,'rgba(255,211,161,0)');ctx.fillStyle=shine;ctx.beginPath();ctx.arc(cx,cy,radius,0,Math.PI*2);ctx.fill()
+    }
+    function animate(now){frame=0;if(!visible)return;if(!lastTime)lastTime=now;const dt=Math.min(40,now-lastTime);lastTime=now;if(!reduced&&!dragging&&!hovering){rotationY+=dt*.000105;rotationX+=dt*.000018;if(Math.abs(velocityX)+Math.abs(velocityY)>.00004){rotationY+=velocityX*dt;rotationX=clamp(rotationX+velocityY*dt,-1.1,1.1);velocityX*=Math.pow(.94,dt/16);velocityY*=Math.pow(.94,dt/16)}else{velocityX=0;velocityY=0}if(now>=nextAdvance&&items.length>1)setActive(active+1)}draw();frame=requestAnimationFrame(animate)}
+    function start(){if(visible&&!frame){lastTime=0;frame=requestAnimationFrame(animate)}}function stop(){if(frame){cancelAnimationFrame(frame);frame=0}}
+    new IntersectionObserver(function(entries){visible=entries[0].isIntersecting;if(visible)start();else stop()},{threshold:.06}).observe(section);
+    new ResizeObserver(function(){const r=canvas.getBoundingClientRect();if(!r.width||!r.height)return;width=r.width;height=r.height;dpr=Math.min(window.devicePixelRatio||1,1.7);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);draw()}).observe(stage);
+    window.addEventListener('resize',function(){const r=canvas.getBoundingClientRect();width=r.width;height=r.height;dpr=Math.min(window.devicePixelRatio||1,1.7);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);draw()},{passive:true});
+    stage.addEventListener('pointerenter',function(){hovering=true});stage.addEventListener('pointerleave',function(){hovering=false;start()});canvas.addEventListener('pointercancel',function(){dragging=false;start()});
+    canvas.addEventListener('pointerdown',function(e){dragging=true;moved=false;downX=lastX=e.clientX;downY=lastY=e.clientY;canvas.setPointerCapture(e.pointerId);velocityX=velocityY=0});
+    canvas.addEventListener('pointermove',function(e){if(!dragging)return;const dx=e.clientX-lastX,dy=e.clientY-lastY;if(Math.abs(e.clientX-downX)+Math.abs(e.clientY-downY)>5)moved=true;rotationY+=dx*.006;rotationX=clamp(rotationX+dy*.004,-1.1,1.1);velocityX=dx*.00042;velocityY=dy*.00032;lastX=e.clientX;lastY=e.clientY;draw()});
+    canvas.addEventListener('pointerup',function(e){dragging=false;if(!moved){const r=canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;let hit=null,best=Infinity;projected.forEach(function(t){const dx=x-t.x,dy=y-t.y,d=Math.sqrt(dx*dx+dy*dy);if(d<Math.max(t.w,t.h)*.72&&d<best){hit=t;best=d}});if(hit){const i=items.indexOf(hit.item);if(i>=0)setActive(i)}}start()});
+    canvas.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();setActive(active+1)}else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();setActive(active-1)}});
+    section.querySelectorAll('[data-menu-step]').forEach(function(b){b.addEventListener('click',function(){setActive(active+Number(b.dataset.menuStep))})});
+    filters.forEach(function(b){b.addEventListener('click',function(){filters.forEach(function(f){f.classList.remove('active');f.setAttribute('aria-pressed','false')});b.classList.add('active');b.setAttribute('aria-pressed','true');const c=b.dataset.filter;items=c==='all'?menuItems.slice():menuItems.filter(function(i){return i.category===c});setActive(Math.min(active,items.length-1));draw()})});
+    setActive(0);const r=canvas.getBoundingClientRect();width=r.width;height=r.height;dpr=Math.min(window.devicePixelRatio||1,1.7);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);start()
+  })();
 
   const revealObserver=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}})},{threshold:.12});
   document.querySelectorAll('.reveal:not(.hero .reveal)').forEach(function(el){revealObserver.observe(el)});
