@@ -221,6 +221,39 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(max-width:700px){.coffee-journey{height:430svh}.journey-sticky{min-height:560px}.journey-top{top:22px;font-size:7px}.journey-progress i{width:45px}.journey-copy{width:calc(100% - 44px);top:38%}.journey-title{font-size:clamp(76px,18vw,118px)}.journey-caption{margin-left:12%;font-size:12px}.journey-brand>div{font-size:clamp(45px,11vw,78px)}.journey-brand em{font-size:clamp(82px,19vw,135px)}.journey-brand p{font-size:7px;letter-spacing:.16em}.journey-scene-label{right:18px;font-size:7px}.journey-end{bottom:28px;font-size:7px}.journey-scroll-cue{bottom:28px;font-size:7px}}
 @media(prefers-reduced-motion:reduce){.coffee-journey{height:auto;min-height:100svh}.journey-sticky{position:relative;min-height:100svh}.journey-copy{display:none}.journey-brand{opacity:1;transform:translateY(-50%) scale(1)}.journey-end{opacity:1}.journey-scroll-cue{display:none}}
 
+/* TYPE-TO-PLAY CAFE INTRO */
+body.entry-open{overflow:hidden}
+.cafe-entry{position:fixed;inset:0;z-index:250;display:grid;place-items:center;overflow:hidden;padding:24px;background:#f2eadc;color:#17130f;isolation:isolate}
+.entry-paper{position:absolute;inset:0;z-index:0;background:#f2eadc}
+.entry-flow-lines{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.entry-flow-lines path{fill:none;stroke:#fffdf7;stroke-linecap:round;stroke-width:1.4;opacity:.72}
+.entry-flow-lines path:nth-child(3n){stroke-width:2.6;opacity:.82}
+.entry-flow-lines path:nth-child(5n){stroke-width:3.8;opacity:.58}
+.entry-content{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;width:100%}
+.entry-wordmark{display:flex;align-items:center;justify-content:center;gap:.16em;margin:0;white-space:nowrap;color:#1d1d1d;font:700 min(19.6svh,9vw)/.84 var(--serif);letter-spacing:-.065em}
+.entry-first-line,.entry-room{display:inline-flex;align-items:center;white-space:nowrap}
+.entry-first-line{gap:.2em}
+.entry-room{gap:0}
+.entry-type-word{display:inline-block;min-height:1em}
+.entry-o-letter{width:.69em;text-align:center}
+.entry-caption{position:absolute;z-index:2;left:50%;bottom:32px;transform:translateX(-50%);margin:0;color:#71675a;font:9px var(--mono);letter-spacing:.2em;text-transform:uppercase;opacity:0;transition:opacity .3s}
+.entry-caption.is-visible{opacity:1}
+.entry-video-stage{position:fixed;z-index:5;left:0;top:0;width:1px;height:1px;overflow:hidden;border-radius:50%;background:#17130f;opacity:0;pointer-events:none;transition:left .82s cubic-bezier(.2,.8,.2,1),top .82s cubic-bezier(.2,.8,.2,1),width .82s cubic-bezier(.2,.8,.2,1),height .82s cubic-bezier(.2,.8,.2,1),border-radius .72s ease,opacity .18s ease}
+.entry-video-stage.is-visible{opacity:1}
+.entry-video-stage.is-expanded{left:0!important;top:0!important;width:100vw!important;height:100svh!important;border-radius:0}
+.entry-video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#17130f}
+.entry-play-fallback{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:16px 22px;border:1px solid rgba(255,255,255,.65);border-radius:999px;background:rgba(23,19,15,.82);color:#fff;font:10px var(--mono);letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.entry-video-stage.is-finished{opacity:0;transition:opacity .45s ease}
+.cafe-entry.is-exiting{opacity:0;transition:opacity .45s ease}
+@media(max-width:720px){
+  .entry-wordmark{flex-direction:column;gap:.12em;font-size:min(12vw,7vh)}
+  .entry-first-line{gap:.16em}
+  .entry-room{font-size:1.12em}
+  .entry-caption{bottom:24px;font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  .entry-video-stage,.cafe-entry{transition-duration:.01ms!important;transition-delay:0ms!important}
+}
 /* SCROLL-DRIVEN CAFE MOODS */
 .experience{padding:0;background:#15100c;color:var(--paper)}
 .experience-journey{height:620svh;position:relative;background:#15100c}
@@ -293,8 +326,40 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 </style>
 </head>
-<body class="is-loading">
-<div class="preloader" aria-hidden="true"><div class="preload-inner"><div class="preload-mark">WR.</div><div class="preload-label">A little room above the sea</div><div class="progress"></div></div></div>
+<body class="entry-open">
+<div class="cafe-entry" data-cafe-entry role="dialog" aria-modal="true" aria-label="The Writer's Room welcome">
+  <div class="entry-paper" aria-hidden="true"></div>
+  <svg class="entry-flow-lines" viewBox="0 0 1600 1000" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M-80 970 C190 800 70 610 320 440 S550 230 620 -70"/>
+    <path d="M-70 1020 C210 850 130 650 370 470 S590 250 680 -60"/>
+    <path d="M40 1080 C270 870 210 680 430 500 S670 270 740 -80"/>
+    <path d="M180 1080 C370 900 300 700 500 510 S760 300 830 -60"/>
+    <path d="M340 1080 C480 890 420 710 590 520 S830 300 910 -80"/>
+    <path d="M520 1090 C600 900 530 720 690 520 S930 300 990 -90"/>
+    <path d="M720 1090 C740 900 660 720 800 530 S1030 300 1080 -90"/>
+    <path d="M920 1090 C880 900 790 730 910 530 S1130 300 1180 -90"/>
+    <path d="M1110 1080 C1030 900 920 720 1010 520 S1220 300 1280 -90"/>
+    <path d="M1300 1080 C1160 900 1050 700 1120 510 S1320 280 1390 -80"/>
+    <path d="M1490 1080 C1310 890 1190 690 1230 500 S1430 270 1510 -80"/>
+    <path d="M1680 1040 C1460 870 1310 650 1350 480 S1530 230 1640 -60"/>
+    <path d="M-110 700 C180 620 110 470 390 380 S610 180 740 -80"/>
+    <path d="M-100 570 C210 510 200 350 470 300 S690 100 850 -80"/>
+    <path d="M-80 420 C230 390 280 250 550 220 S800 40 960 -80"/>
+  </svg>
+  <div class="entry-content">
+    <h1 class="entry-wordmark" aria-label="The Writer's Room">
+      <span class="entry-first-line"><span class="entry-type-word" data-type-word="THE"></span><span class="entry-type-word" data-type-word="WRITER'S"></span></span>
+      <span class="entry-room"><span class="entry-type-word" data-type-word="R"></span><span class="entry-type-word entry-o-letter" data-type-word="O"></span><span class="entry-type-word" data-type-word="OM"></span></span>
+    </h1>
+  </div>
+  <p class="entry-caption" data-entry-caption>RUSHIKONDA · VISAKHAPATNAM</p>
+  <div class="entry-video-stage" data-entry-stage aria-hidden="true">
+    <video class="entry-video" data-entry-video muted playsinline preload="auto" poster="our-story-cup.svg">
+      <source src="gemini_generated_video_55177f8e_gwr_video_mvp.mp4" type="video/mp4">
+    </video>
+    <button class="entry-play-fallback" data-entry-play hidden type="button">Tap to play</button>
+  </div>
+</div>
 <div class="noise"></div><div class="cursor"></div><div class="cursor-ring"></div>
 <nav class="site-nav" aria-label="Main navigation">
   <a class="brand" href="#home">THE WRITER'S <span class="brand-dot"></span> ROOM</a>
@@ -507,11 +572,78 @@ img{display:block;width:100%;height:100%;object-fit:cover}
     if(reduce){section.style.height='auto';stage.style.position='relative';stage.dataset.phase='4';draw(1)}
     else update();
   })();
+  // Type the café name, expand its O into the film, then enter the existing hero.
+  (function(){
+    const overlay=document.querySelector('[data-cafe-entry]');
+    const parts=Array.from(overlay?overlay.querySelectorAll('[data-type-word]'):[]);
+    const oLetter=overlay&&overlay.querySelector('.entry-o-letter');
+    const stage=overlay&&overlay.querySelector('[data-entry-stage]');
+    const video=overlay&&overlay.querySelector('[data-entry-video]');
+    const fallback=overlay&&overlay.querySelector('[data-entry-play]');
+    const caption=overlay&&overlay.querySelector('[data-entry-caption]');
+    const main=document.querySelector('main');
+    const nav=document.querySelector('.site-nav');
+    if(!overlay||!parts.length||!oLetter||!stage||!video)return;
+    if(main)main.setAttribute('inert','');
+    if(nav)nav.setAttribute('inert','');
 
-  const body=document.body;
-  const preloader=document.querySelector('.preloader');
-  window.addEventListener('load',function(){setTimeout(function(){preloader.classList.add('done');body.classList.remove('is-loading');document.querySelectorAll('.hero .reveal').forEach(function(el){el.classList.add('visible')});},650)});
-  setTimeout(function(){if(preloader&&!preloader.classList.contains('done')){preloader.classList.add('done');body.classList.remove('is-loading')}},2600);
+    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const wait=function(ms){return new Promise(function(resolve){window.setTimeout(resolve,reduced?0:ms)})};
+    async function typeWord(el){
+      const word=el.dataset.typeWord||'';
+      for(let i=0;i<word.length;i++){
+        el.textContent+=word[i];
+        await wait(62);
+      }
+      await wait(200);
+    }
+    function revealHero(){
+      stage.classList.add('is-finished');
+      overlay.classList.add('is-exiting');
+      window.setTimeout(function(){
+        overlay.hidden=true;
+        document.body.classList.remove('entry-open');
+        if(main)main.removeAttribute('inert');
+        if(nav)nav.removeAttribute('inert');
+        window.scrollTo({top:0,left:0,behavior:'instant'});
+      },reduced?80:480);
+    }
+    function showPlayFallback(){
+      fallback.hidden=false;
+      fallback.addEventListener('click',function(){
+        fallback.hidden=true;
+        video.play().catch(function(){fallback.hidden=false});
+      });
+    }
+    function startFilm(){
+      const letterRect=oLetter.getBoundingClientRect();
+      const diameter=Math.max(letterRect.width,letterRect.height);
+      stage.style.left=(letterRect.left+(letterRect.width-diameter)/2)+'px';
+      stage.style.top=(letterRect.top+(letterRect.height-diameter)/2)+'px';
+      stage.style.width=diameter+'px';
+      stage.style.height=diameter+'px';
+      stage.classList.add('is-visible');
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          stage.classList.add('is-expanded');
+          video.currentTime=0;
+          video.play().catch(showPlayFallback);
+        });
+      });
+    }
+    video.addEventListener('ended',revealHero,{once:true});
+    video.addEventListener('error',showPlayFallback,{once:true});
+
+    async function begin(){
+      if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+      await wait(180);
+      for(const part of parts)await typeWord(part);
+      if(caption)caption.classList.add('is-visible');
+      await wait(500);
+      startFilm();
+    }
+    begin();
+  })();
   document.getElementById('year').textContent=new Date().getFullYear();
 
   const nav=document.querySelector('.site-nav');
