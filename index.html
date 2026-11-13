@@ -74,17 +74,26 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .section-label{display:flex;justify-content:space-between;align-items:center;gap:20px;font:10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:clamp(42px,7vw,90px)}
 .section-label .number{color:var(--orange)}
 .about{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(44px,9vw,140px);align-items:center}
-.about-visual{position:relative;min-height:680px}
-.about-image{position:absolute;inset:0 12% 8% 0;overflow:hidden}
-.about-image img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.about-visual{position:relative;min-height:680px;isolation:isolate}
+.about-image{position:absolute;inset:0 12% 8% 0;overflow:hidden;background:#382116}
+.about-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,10,7,.16),transparent 36%,rgba(15,10,7,.48))}
+.about-image img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1);filter:saturate(.84) brightness(.9)}
 .about-visual:hover .about-image img{transform:scale(1.045)}
-.about-sticker{position:absolute;right:0;bottom:0;width:clamp(150px,19vw,250px);aspect-ratio:1;background:var(--orange);color:var(--ink);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;transform:rotate(7deg)}
+.about-index{position:absolute;top:22px;left:22px;z-index:2;font:9px var(--mono);letter-spacing:.17em;color:var(--paper)}
+.about-stamp{position:absolute;top:12%;right:5%;z-index:2;width:clamp(124px,15vw,190px);aspect-ratio:1;border:1px solid rgba(242,234,220,.7);border-radius:50%;display:grid;place-items:center;color:var(--paper);transform:rotate(9deg);background:rgba(23,19,15,.22);backdrop-filter:blur(3px)}
+.about-stamp:before{content:"";position:absolute;inset:8px;border:1px solid rgba(242,234,220,.25);border-radius:50%}
+.about-stamp span{position:absolute;top:18px;font:7px var(--mono);letter-spacing:.14em}
+.about-stamp strong{font:italic 600 clamp(25px,3.5vw,42px)/.83 var(--serif);text-align:center;letter-spacing:-.06em;transform:rotate(-9deg)}
+.about-sticker{position:absolute;right:0;bottom:0;width:clamp(150px,19vw,250px);aspect-ratio:1;background:var(--orange);color:var(--ink);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;transform:rotate(7deg);box-shadow:0 18px 50px rgba(0,0,0,.25)}
 .about-sticker strong{font:italic 600 clamp(30px,5vw,65px)/.9 var(--serif);letter-spacing:-.06em}
 .about-sticker span{font:9px var(--mono);letter-spacing:.16em;text-transform:uppercase;margin-top:14px}
+.about-caption{position:absolute;left:0;right:12%;bottom:3%;z-index:2;display:flex;justify-content:space-between;gap:16px;padding:0 18px;font:8px var(--mono);letter-spacing:.15em;text-transform:uppercase;color:rgba(242,234,220,.82)}
 .about-copy .eyebrow{color:var(--orange);font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase}
 .about-copy h2{font:500 clamp(48px,7vw,96px)/.94 var(--serif);letter-spacing:-.075em;margin:24px 0 34px}
 .about-copy h2 em{color:var(--orange);font-weight:500}
 .about-copy p{max-width:490px;color:#b9ad9c;font-size:14px;line-height:1.95;margin-bottom:18px}
+.story-note{display:flex;align-items:center;gap:12px;margin-top:28px;color:var(--paper);font:italic 17px var(--serif)}
+.story-note span{color:var(--orange);font-size:22px}
 .text-link{display:inline-flex;align-items:center;gap:16px;margin-top:22px;color:var(--orange2);font:10px var(--mono);letter-spacing:.15em;text-transform:uppercase;border-bottom:1px solid rgba(240,100,53,.45);padding-bottom:10px}
 .text-link span{font-size:17px;transition:transform .25s}.text-link:hover span{transform:translate(5px,-4px)}
 .experience{background:var(--paper);color:var(--ink)}
@@ -240,10 +249,23 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 </section>
 <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>GOOD COFFEE. BETTER STORIES.</span><b>✳</b><span>MADE FOR THE IN-BETWEEN.</span><b>✳</b><span>GOOD COFFEE. BETTER STORIES.</span><b>✳</b><span>MADE FOR THE IN-BETWEEN.</span><b>✳</b></div></div>
 <section class="section" id="story">
-  <div class="section-label"><span><span class="number">01 /</span> A little about us</span><span>Not just another coffee stop</span></div>
+  <div class="section-label"><span><span class="number">01 /</span> Our story</span><span>A little space to slow down</span></div>
   <div class="about">
-    <div class="about-visual reveal"><div class="about-image"><img src="about.png" alt="The Writer's Room café atmosphere" loading="lazy"></div><div class="about-sticker"><strong>Pause.<br>Pour.<br>Repeat.</strong><span>Your seat is waiting</span></div></div>
-    <div class="about-copy reveal reveal-delay-1"><span class="eyebrow">The Writer's Room · Est. in the hills</span><h2>Some places<br>just <em>stay</em><br>with you.</h2><p>Perched above the Rushikonda coastline, The Writer's Room is a space to slow down and look up. Come for the coffee, stay for the sea breeze, the open terraces and the kind of conversations that take their time.</p><p>Bring a book, bring your people, or bring absolutely nothing. We'll save you a view.</p><a class="text-link" href="#experience">Get to know the place <span>↗</span></a></div>
+    <div class="about-visual reveal">
+      <div class="about-image"><img src="irish-coffee.png" alt="A freshly made coffee at The Writer's Room" loading="lazy"></div>
+      <span class="about-index">01 — THE FIRST POUR</span>
+      <div class="about-stamp" aria-hidden="true"><span>RUSHIKONDA · VIZAG</span><strong>Make<br>room for<br>wonder.</strong></div>
+      <div class="about-sticker"><strong>Pause.<br>Pour.<br>Begin.</strong><span>Pages welcome</span></div>
+      <div class="about-caption"><span>The ritual</span><span>Coffee · Coast · Conversation</span></div>
+    </div>
+    <div class="about-copy reveal reveal-delay-1">
+      <span class="eyebrow">The Writer's Room · Rushikonda, Vizag</span>
+      <h2>A room for<br>the <em>unwritten.</em></h2>
+      <p>Every good story needs a place to begin. Ours is a hill above Rushikonda: sea air through the open terrace, a cup worth lingering over, and enough room to read, write, talk—or do nothing at all.</p>
+      <p>Come with a book, a half-formed idea, your favourite people, or simply the wish to sit a little longer.</p>
+      <a class="text-link" href="#experience">Find your kind of afternoon <span>↗</span></a>
+      <div class="story-note"><span>✳</span> Take the long way through your day.</div>
+    </div>
   </div>
 </section>
 <section class="section experience" id="experience">
@@ -407,3 +429,4 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 </script>
 </body>
 </html>
+
