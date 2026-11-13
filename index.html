@@ -220,6 +220,77 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .journey-sticky[data-phase="4"] .journey-scroll-cue{opacity:0}
 @media(max-width:700px){.coffee-journey{height:430svh}.journey-sticky{min-height:560px}.journey-top{top:22px;font-size:7px}.journey-progress i{width:45px}.journey-copy{width:calc(100% - 44px);top:38%}.journey-title{font-size:clamp(76px,18vw,118px)}.journey-caption{margin-left:12%;font-size:12px}.journey-brand>div{font-size:clamp(45px,11vw,78px)}.journey-brand em{font-size:clamp(82px,19vw,135px)}.journey-brand p{font-size:7px;letter-spacing:.16em}.journey-scene-label{right:18px;font-size:7px}.journey-end{bottom:28px;font-size:7px}.journey-scroll-cue{bottom:28px;font-size:7px}}
 @media(prefers-reduced-motion:reduce){.coffee-journey{height:auto;min-height:100svh}.journey-sticky{position:relative;min-height:100svh}.journey-copy{display:none}.journey-brand{opacity:1;transform:translateY(-50%) scale(1)}.journey-end{opacity:1}.journey-scroll-cue{display:none}}
+
+/* SCROLL-DRIVEN CAFE MOODS */
+.experience{padding:0;background:#15100c;color:var(--paper)}
+.experience-journey{height:620svh;position:relative;background:#15100c}
+.experience-sticky{height:100svh;min-height:660px;position:sticky;top:0;overflow:hidden;isolation:isolate;background:#15100c}
+.experience-backdrop,.experience-shade{position:absolute;inset:0}
+.experience-backdrop{z-index:-2}
+.experience-backdrop img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.58) saturate(.76);transform:scale(1.06);opacity:0;transition:none}
+.experience-backdrop img.is-active{opacity:1}
+.experience-shade{z-index:-1;background:linear-gradient(90deg,rgba(18,13,10,.84) 0%,rgba(18,13,10,.55) 43%,rgba(18,13,10,.2) 100%),linear-gradient(0deg,rgba(12,9,7,.77) 0%,transparent 58%,rgba(12,9,7,.28) 100%)}
+.experience-top{position:absolute;z-index:4;top:90px;left:var(--gutter);right:var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:28px}
+.experience-top .section-label{margin:0;color:rgba(242,234,220,.72);font:9px var(--mono);letter-spacing:.16em;text-transform:uppercase}
+.experience-top .number{color:var(--orange2)}
+.experience-progress{display:flex;align-items:center;gap:12px;color:rgba(242,234,220,.8);font:9px var(--mono);letter-spacing:.12em}
+.experience-progress i{display:block;width:110px;height:1px;background:rgba(242,234,220,.28);position:relative;overflow:hidden}
+.experience-progress i b{position:absolute;inset:0 auto 0 0;width:100%;background:var(--orange2);transform:scaleX(var(--experience-progress,0));transform-origin:left}
+.experience-heading{position:absolute;z-index:2;left:var(--gutter);right:var(--gutter);top:21%;display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin:0}
+.experience-overline{display:block;margin-bottom:18px;color:var(--orange2);font:9px var(--mono);letter-spacing:.2em;text-transform:uppercase}
+.experience-heading h2{max-width:780px;font:500 clamp(65px,8.5vw,126px)/.82 var(--serif);letter-spacing:-.09em}
+.experience-heading h2 em{color:var(--orange);font-weight:500}
+.experience-heading p{max-width:245px;margin:0 0 5px;color:rgba(242,234,220,.78);font-size:13px;line-height:1.8}
+.experience-cup-orbit{position:absolute;z-index:1;left:var(--cup-x,73%);top:var(--cup-y,57%);width:clamp(320px,39vw,560px);aspect-ratio:1;margin:0;padding:9px;border:1px solid rgba(255,135,86,.68);border-radius:50%;background:rgba(18,13,10,.4);box-shadow:0 0 90px rgba(240,100,53,.16);transform:translate(-50%,-50%) rotate(var(--cup-rotate,0deg)) scale(var(--cup-scale,1));will-change:transform}
+.experience-cup-ring{position:absolute;inset:-13px;border:1px solid rgba(255,135,86,.3);border-radius:50%;pointer-events:none}
+.experience-cup-orbit img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:50%;filter:saturate(.9)}
+.experience-scene-copy{position:absolute;z-index:3;left:var(--gutter);bottom:14%;width:min(520px,43vw);color:var(--paper)}
+.experience-scene-copy.is-entering{animation:experienceSceneIn .55s cubic-bezier(.2,.7,.2,1) both}
+@keyframes experienceSceneIn{from{opacity:.25;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.experience-scene-meta{display:block;margin-bottom:15px;color:var(--orange2);font:9px var(--mono);letter-spacing:.18em}
+.experience-scene-copy h3{font:500 clamp(36px,4.4vw,66px)/.98 var(--serif);letter-spacing:-.055em;margin:0 0 12px}
+.experience-scene-copy p{max-width:380px;color:rgba(242,234,220,.82);font-size:13px;line-height:1.7}
+.experience-bottom{position:absolute;z-index:4;left:var(--gutter);right:var(--gutter);bottom:30px;display:flex;align-items:center;justify-content:space-between;color:rgba(242,234,220,.62);font:8px var(--mono);letter-spacing:.15em}
+.experience-bottom>b,.experience-bottom b{color:var(--orange2);font-weight:500}
+.experience-bottom i{font-style:normal}
+.experience-scroll-cue b{margin-left:10px;font-size:15px}
+.experience-scroll-steps{position:absolute;inset:0 auto auto 0;width:1px;height:100%;pointer-events:none}
+.experience-scroll-steps div{height:calc(100% / 6)}
+@media(max-width:900px){
+  .experience-heading{top:24%}
+  .experience-heading h2{font-size:clamp(62px,10vw,96px)}
+  .experience-heading p{max-width:210px}
+  .experience-cup-orbit{width:clamp(300px,43vw,410px);left:70%}
+  .experience-scene-copy{width:min(430px,48vw);bottom:13%}
+}
+@media(max-width:700px){
+  .experience-journey{height:560svh}
+  .experience-sticky{min-height:680px}
+  .experience-top{top:83px;align-items:flex-start}
+  .experience-top .section-label{font-size:7px;letter-spacing:.12em}
+  .experience-top .section-label>span:last-child{display:none}
+  .experience-progress{gap:7px;font-size:7px}
+  .experience-progress i{width:48px}
+  .experience-heading{top:19%;display:block}
+  .experience-overline{font-size:7px;margin-bottom:13px}
+  .experience-heading h2{font-size:clamp(49px,13vw,68px);line-height:.86}
+  .experience-heading p{max-width:290px;margin-top:13px;font-size:11px;line-height:1.55}
+  .experience-cup-orbit{width:clamp(180px,49vw,250px);left:70%;top:53%;padding:6px}
+  .experience-cup-ring{inset:-9px}
+  .experience-scene-copy{left:var(--gutter);right:var(--gutter);bottom:13%;width:auto;max-width:440px}
+  .experience-scene-meta{font-size:7px;margin-bottom:10px}
+  .experience-scene-copy h3{font-size:clamp(30px,8vw,42px);margin-bottom:8px}
+  .experience-scene-copy p{max-width:290px;font-size:11px;line-height:1.5}
+  .experience-bottom{bottom:20px;font-size:7px;letter-spacing:.1em}
+  .experience-location{display:none}
+  .experience-scroll-cue b{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){
+  .experience-journey{height:auto;min-height:100svh}
+  .experience-sticky{position:relative;min-height:100svh}
+  .experience-cup-orbit,.experience-scene-copy{will-change:auto}
+  .experience-scene-copy.is-entering{animation:none}
+}
 </style>
 </head>
 <body class="is-loading">
@@ -276,15 +347,48 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   </div>
 </section>
 <section class="section experience" id="experience">
-  <div class="section-label"><span><span class="number">02 /</span> More than a table</span><span>Find your kind of afternoon</span></div>
-  <div class="experience-heading reveal"><h2>A room for<br><em>every mood.</em></h2><p>Come for one thing. Discover a few more. The best plans here are the ones you didn't make.</p></div>
-  <div class="experience-grid">
-    <article class="experience-card reveal"><img src="sea-view.png" alt="Sea view terrace" loading="lazy"><span class="card-meta">01 — THE HORIZON</span><div class="card-content"><h3>Sea-view terraces</h3><p>Open-air seats with the Bay of Bengal stretching out in front of you.</p></div></article>
-    <article class="experience-card reveal reveal-delay-1"><img src="sunset-evening.png" alt="Sunset over the coast" loading="lazy"><span class="card-meta">02 — GOLDEN HOUR</span><div class="card-content"><h3>Sunset hours</h3><p>Watch the Rushikonda sky turn every shade of gold.</p></div></article>
-    <article class="experience-card reveal reveal-delay-2"><img src="workspace.png" alt="Creative workspace" loading="lazy"><span class="card-meta">03 — DEEP WORK</span><div class="card-content"><h3>Creative corners</h3><p>A change of scene for your next big idea.</p></div></article>
-    <article class="experience-card reveal"><img src="coffee.png" alt="Coffee being prepared" loading="lazy"><span class="card-meta">04 — THE RITUAL</span><div class="card-content"><h3>Coffee culture</h3><p>From a familiar classic to a signature cold coffee.</p></div></article>
-    <article class="experience-card reveal reveal-delay-1"><img src="romantic.png" alt="Warm café ambience" loading="lazy"><span class="card-meta">05 — SLOW EVENINGS</span><div class="card-content"><h3>Intimate moments</h3><p>Warm lights, cosy corners and time that feels unhurried.</p></div></article>
-    <article class="experience-card reveal reveal-delay-2"><img src="social.png" alt="Friends gathering at the café" loading="lazy"><span class="card-meta">06 — TOGETHER</span><div class="card-content"><h3>Gather around</h3><p>Make room for birthdays, meetups and spontaneous plans.</p></div></article>
+  <div class="experience-journey" data-experience-journey role="region" aria-label="Six ways to spend an afternoon at The Writer's Room">
+    <div class="experience-sticky" data-experience-sticky>
+      <div class="experience-backdrop" aria-hidden="true">
+        <img data-exp-bg class="is-active" src="sea-view.png" alt="">
+        <img data-exp-bg src="sunset-evening.png" alt="">
+      </div>
+      <div class="experience-shade" aria-hidden="true"></div>
+
+      <div class="experience-top">
+        <div class="section-label"><span><span class="number">02 /</span> More than a table</span><span>Find your kind of afternoon</span></div>
+        <div class="experience-progress" aria-hidden="true"><span data-exp-count>01</span><i><b></b></i><span>06</span></div>
+      </div>
+
+      <div class="experience-heading">
+        <div>
+          <span class="experience-overline">The Writer's Room · Rushikonda</span>
+          <h2>A room for<br><em>every mood.</em></h2>
+        </div>
+        <p>Come for one thing. Discover a few more. The best plans here are the ones you didn't make.</p>
+      </div>
+
+      <figure class="experience-cup-orbit">
+        <span class="experience-cup-ring" aria-hidden="true"></span>
+        <img src="our-story-cup.svg" alt="A real ceramic cup of latte on a wooden café table">
+      </figure>
+
+      <div class="experience-scene-copy" data-exp-copy-panel>
+        <span class="experience-scene-meta" data-exp-meta>01 — THE HORIZON</span>
+        <h3 data-exp-title>Sea-view terraces</h3>
+        <p data-exp-description>Open-air seats with the Bay of Bengal stretching out in front of you.</p>
+      </div>
+
+      <div class="experience-bottom">
+        <span><b data-exp-count>01</b> <i> / 06</i></span>
+        <span class="experience-scroll-cue">SCROLL TO EXPLORE <b>↓</b></span>
+        <span class="experience-location">RUSHIKONDA · VISAKHAPATNAM</span>
+      </div>
+    </div>
+
+    <div class="experience-scroll-steps" aria-hidden="true">
+      <div></div><div></div><div></div><div></div><div></div><div></div>
+    </div>
   </div>
 </section>
 <section class="section menu-section" id="menu">
@@ -457,6 +561,71 @@ img{display:block;width:100%;height:100%;object-fit:cover}
     document.querySelectorAll('a,button,.menu-card,.experience-card').forEach(function(el){el.addEventListener('mouseenter',function(){ring.classList.add('active')});el.addEventListener('mouseleave',function(){ring.classList.remove('active')})});
     document.querySelectorAll('.magnetic').forEach(function(el){el.addEventListener('mousemove',function(e){const r=el.getBoundingClientRect();const x=e.clientX-r.left-r.width/2;const y=e.clientY-r.top-r.height/2;el.style.transform='translate('+x*.12+'px,'+y*.18+'px)'});el.addEventListener('mouseleave',function(){el.style.transform=''})});
   }
+  // Scroll through the existing cafe moods with the real latte cup as the focal point.
+  (function(){
+    const journey=document.querySelector('[data-experience-journey]');
+    if(!journey)return;
+    const sticky=journey.querySelector('[data-experience-sticky]');
+    const backgrounds=Array.from(journey.querySelectorAll('[data-exp-bg]'));
+    const countLabels=Array.from(journey.querySelectorAll('[data-exp-count]'));
+    const progress=journey.querySelector('.experience-progress i b');
+    const panel=journey.querySelector('[data-exp-copy-panel]');
+    const meta=journey.querySelector('[data-exp-meta]');
+    const title=journey.querySelector('[data-exp-title]');
+    const description=journey.querySelector('[data-exp-description]');
+    const scenes=[
+      {meta:'01 — THE HORIZON',title:'Sea-view terraces',description:'Open-air seats with the Bay of Bengal stretching out in front of you.',image:'sea-view.png',x:73,y:57,mx:68,my:52,rotate:-7,scale:.96},
+      {meta:'02 — GOLDEN HOUR',title:'Sunset hours',description:'Watch the Rushikonda sky turn every shade of gold.',image:'sunset-evening.png',x:69,y:52,mx:72,my:49,rotate:5,scale:1.04},
+      {meta:'03 — DEEP WORK',title:'Creative corners',description:'A change of scene for your next big idea.',image:'workspace.png',x:66,y:58,mx:66,my:54,rotate:-4,scale:.98},
+      {meta:'04 — THE RITUAL',title:'Coffee culture',description:'From a familiar classic to a signature cold coffee.',image:'coffee.png',x:74,y:49,mx:72,my:49,rotate:6,scale:1.08},
+      {meta:'05 — SLOW EVENINGS',title:'Intimate moments',description:'Warm lights, cosy corners and time that feels unhurried.',image:'romantic.png',x:68,y:57,mx:66,my:53,rotate:-5,scale:1.02},
+      {meta:'06 — TOGETHER',title:'Gather around',description:'Make room for birthdays, meetups and spontaneous plans.',image:'social.png',x:74,y:51,mx:71,my:50,rotate:4,scale:.96}
+    ];
+    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let front=backgrounds[0],back=backgrounds[1],pairIndex=0,activeScene=-1,frame=0;
+    function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
+    function mix(a,b,t){return a+(b-a)*t}
+    function setScene(index){
+      const scene=scenes[index];
+      if(index===activeScene)return;
+      activeScene=index;
+      meta.textContent=scene.meta;title.textContent=scene.title;description.textContent=scene.description;
+      countLabels.forEach(function(label){label.textContent=String(index+1).padStart(2,'0')});
+      panel.classList.remove('is-entering');void panel.offsetWidth;panel.classList.add('is-entering');
+    }
+    function syncBackgroundPair(index){
+      if(index===pairIndex)return;
+      if(index===pairIndex+1){const oldFront=front;front=back;back=oldFront}
+      else if(index===pairIndex-1){const oldBack=back;back=front;front=oldBack}
+      pairIndex=index;
+      front.src=scenes[index].image;back.src=scenes[Math.min(index+1,scenes.length-1)].image;
+    }
+    function render(){
+      frame=0;
+      const travel=journey.offsetHeight-window.innerHeight;
+      const progressValue=travel>0?clamp(-journey.getBoundingClientRect().top/travel,0,1):0;
+      const scenePosition=progressValue*(scenes.length-1);
+      const index=Math.min(scenes.length-1,Math.floor(scenePosition));
+      const blend=index===scenes.length-1?0:scenePosition-index;
+      syncBackgroundPair(index);
+      setScene(index);
+      front.style.opacity=String(1-blend);back.style.opacity=String(blend);
+      const next=scenes[Math.min(index+1,scenes.length-1)];
+      const current=scenes[index];
+      const mobile=window.matchMedia('(max-width: 700px)').matches;
+      sticky.style.setProperty('--cup-x',mix(mobile?current.mx:current.x,mobile?next.mx:next.x,blend)+'%');
+      sticky.style.setProperty('--cup-y',mix(mobile?current.my:current.y,mobile?next.my:next.y,blend)+'%');
+      sticky.style.setProperty('--cup-rotate',mix(current.rotate,next.rotate,blend)+'deg');
+      sticky.style.setProperty('--cup-scale',mix(current.scale,next.scale,blend));
+      sticky.style.setProperty('--experience-progress',String(progressValue));
+    }
+    function schedule(){if(!frame)frame=requestAnimationFrame(render)}
+    if(reduced){setScene(0);front.style.opacity='1';back.style.opacity='0';return}
+    window.addEventListener('scroll',schedule,{passive:true});
+    window.addEventListener('resize',schedule,{passive:true});
+    schedule();
+  })();
+
 })();
 </script>
 </body>
